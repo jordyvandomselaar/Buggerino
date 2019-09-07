@@ -2,11 +2,11 @@ import {Organization} from "../../types/Organization";
 import {organizationsActionTypes, SET_ORGANIZATIONS} from "./actions";
 
 export interface OrganizationsState {
-    organizations: Organization[]
+    organizations: Organization[];
 }
 
 const initialState: OrganizationsState = {
-  organizations: []
+    organizations: [],
 };
 
 export const organizationsReducer = (state: OrganizationsState = initialState, action: organizationsActionTypes): OrganizationsState => {
@@ -14,8 +14,9 @@ export const organizationsReducer = (state: OrganizationsState = initialState, a
         case SET_ORGANIZATIONS:
             return {
                 ...state,
-                organizations: action.data.organizations
+                organizations: action.payload.organizations
             };
+
         default:
             return state;
     }

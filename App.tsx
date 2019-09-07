@@ -1,42 +1,35 @@
 import React from "react";
-import {Header} from "react-native-elements";
-import {View} from "react-native";
-import OrganizationSelector from "./src/components/views/OrganizationSelector";
 import {Provider} from "react-redux";
-import {applyMiddleware, combineReducers, compose, createStore} from "redux";
-import {organizationsReducer} from "./src/store/organizations/reducer";
-import createSagaMiddleware from "redux-saga"
-import rootSaga from "./src/store/rootSaga";
+import store from "./src/store";
+import SelectOrganizationScreen from "./src/components/views/SelectOrganization";
+import {createAppContainer} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack'
+import HomeScreen from "./src/components/views/HomeScreen";
+import ProjectListScreen from "./src/components/views/ProjectListScreen";
 
-const sagaMiddleware = createSagaMiddleware();
+const MainNavigator = createStackNavigator({
+    Home: HomeScreen,
+    ProjectList: ProjectListScreen
+}, {
+    initialRouteName: "Home",
+    defaultNavigationOptions: {
+        title: "Buggerino",
+        headerStyle: {
+            backgroundColor: '#9696ff',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+            fontWeight: 'bold',
+        },
+    },
+});
 
-// @ts-ignore
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-const store = createStore(
-    combineReducers(
-        {
-            organizations: organizationsReducer
-        }
-    ),
-    composeEnhancers(
-        applyMiddleware(sagaMiddleware)
-    )
-);
-
-sagaMiddleware.run(rootSaga);
+const AppContainer = createAppContainer(MainNavigator);
 
 const App = () => {
     return (
         <Provider store={store}>
-            <View>
-                <Header
-                    leftComponent={{icon: 'menu', color: '#fff'}}
-                    centerComponent={{text: 'Buggerino', style: {color: '#fff'}}}
-                />
-
-                <OrganizationSelector/>
-            </View>
+            <AppContainer/>
         </Provider>
     );
 };

@@ -9,7 +9,7 @@ export const loadOrganizations = () => ({
 
 export const setOrganizations = (organizations: Organization[]) => ({
     type: SET_ORGANIZATIONS,
-    data: {organizations}
+    payload: {organizations}
 });
 
 interface loadOrganizationsAction {
@@ -18,7 +18,7 @@ interface loadOrganizationsAction {
 
 interface setOrganizationsAction {
     type: typeof SET_ORGANIZATIONS,
-    data: {organizations: Organization[]}
+    payload: {organizations: Organization[]}
 }
 
 export type organizationsActionTypes = loadOrganizationsAction | setOrganizationsAction;
