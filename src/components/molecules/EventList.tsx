@@ -3,24 +3,27 @@ import {ListItem} from "react-native-elements"
 import {Organization} from "../../types/Organization";
 import {FlatList, SafeAreaView, View} from "react-native";
 import {Project} from "../../types/Project";
+import {Error} from "../../types/Error";
+import {BugsnagEvent} from "../../types/BugsnagEvent";
 
 interface IProps {
-    projects: Project[],
-    onSelectProject: (projectId: string) => void
+    events: BugsnagEvent[],
+    error: Error
+    onSelectEvent: (eventId) => void
 }
 
-const ProjectList = ({projects, onSelectProject}: IProps) => {
+const EventList = ({events, error, onSelectEvent}: IProps) => {
     return (
         <FlatList
-                data={projects}
+                data={events}
                 keyExtractor={(item) => item.id}
                 renderItem={({item}) => (
                     <ListItem onPress={() => {
-                        onSelectProject(item.id)
-                    }} title={item.name}/>
+                        onSelectEvent(item.id)
+                    }} title={error.message}/>
                 )}
             />
     );
 };
 
-export default ProjectList;
+export default EventList;

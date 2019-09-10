@@ -1,15 +1,20 @@
 import React from "react";
 import {Provider} from "react-redux";
 import store from "./src/store";
-import SelectOrganizationScreen from "./src/components/views/SelectOrganization";
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack'
 import HomeScreen from "./src/components/views/HomeScreen";
 import ProjectListScreen from "./src/components/views/ProjectListScreen";
+import ErrorListScreen from "./src/components/views/ErrorListScreen";
+import EventListScreen from "./src/components/views/EventListScreen";
+import EventDetailScreen from "./src/components/views/EventDetailScreen";
 
 const MainNavigator = createStackNavigator({
     Home: HomeScreen,
-    ProjectList: ProjectListScreen
+    ProjectList: ProjectListScreen,
+    ErrorList: ErrorListScreen,
+    EventList: EventListScreen,
+    EventDetail: EventDetailScreen
 }, {
     initialRouteName: "Home",
     defaultNavigationOptions: {

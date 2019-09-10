@@ -3,7 +3,8 @@ import {call, put, takeLatest} from "redux-saga/effects"
 import {LOAD_ORGANIZATIONS, setOrganizations} from "./actions";
 
 function* fetchOrganizations() {
-    const {data: organizations} = yield call(getOrganizations);
+    const response = yield call(getOrganizations);
+    const {data: organizations} = response;
 
     yield put(setOrganizations(organizations));
 }

@@ -12,11 +12,13 @@ const ProjectSelector = ({navigation}: NavigationScreenProps) => {
 
     const organizationId = navigation.getParam('organizationId');
 
+    const handleRedirect = (projectId: string) => navigation.navigate("ErrorList", {projectId});
+
     useEffect(() => {
         dispatch(loadProjects(organizationId));
     }, [organizationId]);
     return (
-        <ProjectList projects={projects}/>
+        <ProjectList projects={projects} onSelectProject={handleRedirect}/>
     );
 };
 
