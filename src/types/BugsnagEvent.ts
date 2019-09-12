@@ -3,20 +3,20 @@ export interface App {
 }
 
 export interface Code {
-    [lineNumber: string]: string
+    [line_number: string]: string
 }
 
 export interface Stacktrace {
-    lineNumber: number;
+    line_number: number;
     file: string;
-    inProject: boolean;
+    in_project: boolean;
     method: string;
-    sourceControlName: string;
-    code: Code;
+    source_control_name: string;
+    code?: Code;
 }
 
 export interface Exception {
-    errorClass: string;
+    error_class: string;
     message: string;
     stacktrace: Stacktrace[];
 }

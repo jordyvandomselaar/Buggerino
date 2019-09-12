@@ -1,6 +1,6 @@
 import React from "react";
 import {View} from "react-native";
-import {Text} from "react-native-elements";
+import {Text, Button} from "react-native-elements";
 import OrganizationSelector from "../organisms/OrganizationSelector";
 import {NavigationScreenProps} from "react-navigation";
 

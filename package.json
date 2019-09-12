@@ -24,10 +24,17 @@
     "redux-saga": "^1.0.5"
   },
   "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "@storybook/addon-actions": "^5.1.11",
+    "@storybook/addon-links": "^5.1.11",
+    "@storybook/addons": "^5.1.11",
+    "@storybook/react-native": "^5.1.11",
     "@types/react": "^16.8.23",
     "@types/react-native": "^0.57.65",
     "@types/react-redux": "^7.1.2",
+    "babel-loader": "^8.0.6",
     "babel-preset-expo": "^6.0.0",
+    "styled-components": "^4.3.2",
     "typescript": "^3.4.5"
   },
   "private": true
