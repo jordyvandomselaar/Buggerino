@@ -3,6 +3,7 @@ export default {
     flex: 1,
     width: '100%',
     justifyContent: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#FFF',
+    marginTop: 100
   },
 };

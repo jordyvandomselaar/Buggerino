@@ -19,7 +19,7 @@ const EventList = ({events, error, onSelectEvent}: IProps) => {
                 data={events}
                 keyExtractor={(item) => item.id}
                 renderItem={({item}) => (
-                    <ErrorItem error={error} event={item} onSelectEvent={onSelectEvent}/>
+                    <ErrorItem error={error} event={item} onSelectEvent={onSelectEvent} type="event"/>
                 )}
             />
     );

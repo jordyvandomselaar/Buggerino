@@ -10,6 +10,7 @@ interface IProps {
     event?: BugsnagEvent;
     onSelectError?: (errorId: string) => void;
     onSelectEvent?: (errorId: string) => void;
+    type?: "event" | "error"
 }
 
 const ErrorClass = styled(Text)`
@@ -25,7 +26,7 @@ const Title = styled(Text)`
   font-size: 20px;
 `;
 
-const ErrorItem = ({error, onSelectError, event, onSelectEvent}: IProps) => {
+const ErrorItem = ({error, onSelectError, event, onSelectEvent, type = "error"}: IProps) => {
     if (!!onSelectEvent && !event) {
         throw new Error("Cannot use onSelectEvent without event");
     }
@@ -34,12 +35,11 @@ const ErrorItem = ({error, onSelectError, event, onSelectEvent}: IProps) => {
 
     return (
         <ListItem
-            topDivider
             title={<Title><ErrorClass>{error.error_class} </ErrorClass>{error.context}</Title>}
             subtitle={
                 <View>
                     <Text>{error.message}</Text>
-                    {!event && <Subtitle>{error.events} all time events</Subtitle>}
+                    {type === "error" && <Subtitle>{error.events} all time events</Subtitle>}
                 </View>
             }
             rightSubtitle={rightSubtitle}

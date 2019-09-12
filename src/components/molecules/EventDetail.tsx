@@ -1,42 +1,50 @@
 import React from "react";
 import {BugsnagError} from "../../types/BugsnagError";
 import {BugsnagEvent} from "../../types/BugsnagEvent";
-import {Card, Text} from "react-native-elements";
+import {Text} from "react-native-elements";
 import styled from "styled-components";
 import {ScrollView, View} from "react-native";
+import ErrorItem from "../atoms/ErrorItem";
 
 interface IProps {
     error: BugsnagError
     event: BugsnagEvent,
 }
 
-const ErrorClass = styled(Text)`
-  font-weight: bold;
+const CodeBlock = styled(View)`
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin: 0 10px;
+  border-radius: 5px;
 `;
 
-const CodeBlock = styled(View)`
-  background-color: #FFF;
+const StacktraceHeaderText = styled(Text)`
+  font-size: 18px;
+  text-align: center;
+  padding-bottom: 20px;
+`;
+
+const StacktraceItem = styled(View)`
+  margin-bottom: 20px;
 `;
 
 const EventDetail = ({error, event}: IProps) => {
-    const receivedAtDate = new Date(event.received_at);
-
     return (
         <ScrollView>
-            <Text><ErrorClass h1>{error.error_class}</ErrorClass> <Text h2>{error.context}</Text></Text>
-            <Text>{error.message}</Text>
-            <Text>{receivedAtDate.toLocaleString()}</Text>
+            <ErrorItem error={error} event={event}/>
 
-            <Text h3>Stacktrace</Text>
             {event.exceptions.map(exception => (
                 (exception.stacktrace || []).map((stacktraceItem, key) => (
-                    <Card key={key} title={`${stacktraceItem.file}: ${stacktraceItem.line_number} ${stacktraceItem.method}`}>
+                    <StacktraceItem key={key}>
+                        <StacktraceHeaderText>
+                            {stacktraceItem.file}:{stacktraceItem.line_number} - {stacktraceItem.method}
+                        </StacktraceHeaderText>
                     <CodeBlock>
                         {Object.keys(stacktraceItem.code || {}).map(lineNumber => (
                             <Text key={lineNumber}>{lineNumber}: {stacktraceItem.code[lineNumber]}</Text>
                         ))}
                     </CodeBlock>
-                    </Card>
+                    </StacktraceItem>
                 ))
             ))}
         </ScrollView>
