@@ -8,7 +8,7 @@ import {loadProjects} from "../../store/projects/actions";
 
 const ProjectSelector = ({navigation}: NavigationScreenProps) => {
     const dispatch = useDispatch();
-    const projects = useSelector<AppState, Project[]>(state => state.projects.projects);
+    const projects = useSelector<AppState, Project[]>(state => state.projects.projects).sort((a, b) => a.name.localeCompare(b.name));
 
     const organizationId = navigation.getParam('organizationId');
 
