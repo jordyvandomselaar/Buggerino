@@ -12,7 +12,7 @@ const EventListScreen = (props: NavigationScreenProps) => {
 };
 
 EventListScreen.navigationOptions = {
-    title: "Event list"
+    title: "Events"
 };
 
 export default EventListScreen;

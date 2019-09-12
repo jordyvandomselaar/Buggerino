@@ -20,11 +20,12 @@ const MainNavigator = createStackNavigator({
     defaultNavigationOptions: {
         title: "Buggerino",
         headerStyle: {
-            backgroundColor: '#9696ff',
+            backgroundColor: '#FFF',
         },
-        headerTintColor: '#fff',
+        headerTintColor: '#42a5f5',
         headerTitleStyle: {
             fontWeight: 'bold',
+            color: '#42a5f5',
         },
     },
 });

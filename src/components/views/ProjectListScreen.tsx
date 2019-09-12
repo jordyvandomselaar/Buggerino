@@ -13,7 +13,7 @@ const ProjectListScreen = (props: NavigationScreenProps) => {
 };
 
 ProjectListScreen.navigationOptions = {
-    title: "Project list"
+    title: "Projects"
 };
 
 export default ProjectListScreen;

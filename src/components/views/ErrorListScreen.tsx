@@ -14,7 +14,7 @@ const ErrorListScreen = (props: NavigationScreenProps) => {
 };
 
 ErrorListScreen.navigationOptions = {
-    title: "BugsnagError list"
+    title: "Errors"
 };
 
 export default ErrorListScreen;

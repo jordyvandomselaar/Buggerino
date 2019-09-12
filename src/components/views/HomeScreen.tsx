@@ -7,8 +7,8 @@ import {NavigationScreenProps} from "react-navigation";
 const HomeScreen = (props: NavigationScreenProps) => {
     return (
         <View>
-            <Text>Welcome to Buggerino!</Text>
-            <Text>Please start by selecting an organization</Text>
+            <Text h3>Welcome to Buggerino!</Text>
+            <Text h4>Please start by selecting an organization</Text>
             <OrganizationSelector {...props}/>
         </View>
     );
