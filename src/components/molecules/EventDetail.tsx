@@ -1,12 +1,12 @@
 import React from "react";
-import {Error} from "../../types/Error";
+import {BugsnagError} from "../../types/BugsnagError";
 import {BugsnagEvent} from "../../types/BugsnagEvent";
 import {Card, Text} from "react-native-elements";
 import styled from "styled-components";
 import {ScrollView, View} from "react-native";
 
 interface IProps {
-    error: Error
+    error: BugsnagError
     event: BugsnagEvent,
 }
 
@@ -27,6 +27,7 @@ const EventDetail = ({error, event}: IProps) => {
             <Text>{error.message}</Text>
             <Text>{receivedAtDate.toLocaleString()}</Text>
 
+            <Text h3>Stacktrace</Text>
             {event.exceptions.map(exception => (
                 (exception.stacktrace || []).map((stacktraceItem, key) => (
                     <Card key={key} title={`${stacktraceItem.file}: ${stacktraceItem.line_number} ${stacktraceItem.method}`}>

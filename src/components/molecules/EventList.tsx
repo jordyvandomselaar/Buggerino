@@ -3,12 +3,13 @@ import {ListItem} from "react-native-elements"
 import {Organization} from "../../types/Organization";
 import {FlatList, SafeAreaView, View} from "react-native";
 import {Project} from "../../types/Project";
-import {Error} from "../../types/Error";
+import {BugsnagError} from "../../types/BugsnagError";
 import {BugsnagEvent} from "../../types/BugsnagEvent";
+import ErrorItem from "../atoms/ErrorItem";
 
 interface IProps {
     events: BugsnagEvent[],
-    error: Error
+    error: BugsnagError
     onSelectEvent: (eventId) => void
 }
 
@@ -18,9 +19,7 @@ const EventList = ({events, error, onSelectEvent}: IProps) => {
                 data={events}
                 keyExtractor={(item) => item.id}
                 renderItem={({item}) => (
-                    <ListItem onPress={() => {
-                        onSelectEvent(item.id)
-                    }} title={error.message}/>
+                    <ErrorItem error={error} event={item} onSelectEvent={onSelectEvent}/>
                 )}
             />
     );

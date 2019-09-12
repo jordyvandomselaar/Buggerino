@@ -1,5 +1,5 @@
 import {Organization} from "../../types/Organization";
-import {Error} from "../../types/Error";
+import {BugsnagError} from "../../types/BugsnagError";
 
 export const LOAD_ERRORS = "LOAD_ERRORS";
 export const SET_ERRORS = "SET_ERRORS";
@@ -11,7 +11,7 @@ export const loadErrors = (projectId: string) => ({
     }
 });
 
-export const setErrors = (errors: Error[]) => ({
+export const setErrors = (errors: BugsnagError[]) => ({
     type: SET_ERRORS,
     payload: {errors}
 });
@@ -25,7 +25,7 @@ export interface loadErrorsAction {
 
 export interface setErrorsAction {
     type: typeof SET_ERRORS,
-    payload: {errors: Error[]}
+    payload: {errors: BugsnagError[]}
 }
 
 export type errorsActionTypes = loadErrorsAction | setErrorsAction;

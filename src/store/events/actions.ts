@@ -1,10 +1,10 @@
 import {BugsnagEvent} from "../../types/BugsnagEvent";
-import {Error} from "../../types/Error";
+import {BugsnagError} from "../../types/BugsnagError";
 
 export const LOAD_EVENTS = "LOAD_EVENTS";
 export const SET_EVENTS = "SET_EVENTS";
 
-export const loadEvents = (error: Error) => ({
+export const loadEvents = (error: BugsnagError) => ({
     type: LOAD_EVENTS,
     payload: {
         error
@@ -19,7 +19,7 @@ export const setEvents = (events: BugsnagEvent[]) => ({
 export interface loadEventsAction {
     type: typeof LOAD_EVENTS,
     payload: {
-        error: Error
+        error: BugsnagError
     }
 }
 

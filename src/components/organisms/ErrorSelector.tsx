@@ -2,13 +2,13 @@ import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {AppState} from "../../store";
 import {NavigationScreenProps} from "react-navigation";
-import {Error} from "../../types/Error";
+import {BugsnagError} from "../../types/BugsnagError";
 import {loadErrors} from "../../store/errors/actions";
 import ErrorList from "../molecules/ErrorList";
 
 const ErrorSelector = ({navigation}: NavigationScreenProps) => {
     const dispatch = useDispatch();
-    const errors = useSelector<AppState, Error[]>(state => state.errors.errors);
+    const errors = useSelector<AppState, BugsnagError[]>(state => state.errors.errors);
 
     const projectId = navigation.getParam('projectId');
 

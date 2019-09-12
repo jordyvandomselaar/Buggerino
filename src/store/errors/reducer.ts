@@ -1,8 +1,8 @@
 import {errorsActionTypes, SET_ERRORS} from "./actions";
-import {Error} from "../../types/Error";
+import {BugsnagError} from "../../types/BugsnagError";
 
 export interface ErrorsState {
-    errors: Error[];
+    errors: BugsnagError[];
 }
 
 const initialState: ErrorsState = {

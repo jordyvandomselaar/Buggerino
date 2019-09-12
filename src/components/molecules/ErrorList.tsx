@@ -1,10 +1,11 @@
 import React from "react";
 import {ListItem} from "react-native-elements"
 import {FlatList} from "react-native";
-import {Error} from "../../types/Error";
+import {BugsnagError} from "../../types/BugsnagError";
+import ErrorItem from "../atoms/ErrorItem";
 
 interface IProps {
-    errors: Error[],
+    errors: BugsnagError[],
     onSelectError: (errorId: string) => void
 }
 
@@ -14,9 +15,7 @@ const ErrorList = ({errors, onSelectError}: IProps) => {
             data={errors}
             keyExtractor={(item) => item.id}
             renderItem={({item}) => (
-                <ListItem onPress={() => {
-                    onSelectError(item.id);
-                }} title={item.message}/>
+                <ErrorItem error={item} onSelectError={onSelectError}/>
             )}
         />
     );

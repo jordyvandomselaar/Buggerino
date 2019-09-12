@@ -20,7 +20,7 @@ export interface GroupingFields {
     error_class: string;
 }
 
-export interface Error {
+export interface BugsnagError {
     severity: string;
     assigned_collaborator_id: string;
     id: string;

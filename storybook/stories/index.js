@@ -3,6 +3,7 @@ import React from "react";
 import {storiesOf} from "@storybook/react-native";
 import CenterView from "./CenterView";
 import EventDetail from "../../src/components/molecules/EventDetail";
+import ErrorItem from "../../src/components/atoms/ErrorItem";
 // eslint-disable-next-line import/extensions
 
 const error = {
@@ -49,15 +50,15 @@ const event = {
     "received_at": "2019-09-12T11:21:14.000Z",
     "exceptions": [
         {
-            "errorClass": "Error",
+            "error_class": "Error",
             "message": "Request failed with status code 404",
             "stacktrace": [
                 {
-                    "lineNumber": 1234,
+                    "line_number": 1234,
                     "file": "controllers/users_controller.rb",
-                    "inProject": true,
+                    "in_project": true,
                     "method": "exports",
-                    "sourceControlName": "github",
+                    "source_control_name": "github",
                     "code": {
                         "1231": "\"  def a\"",
                         "1232": "\"\"",
@@ -83,4 +84,13 @@ storiesOf("EventDetail", module)
     .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)
     .add("default", () => (
         <EventDetail error={error} event={event}/>
+    ));
+
+storiesOf("ErrorItem", module)
+    .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)
+    .add("Error", () => (
+        <ErrorItem error={error}/>
+    ))
+    .add("Event", () => (
+        <ErrorItem error={error} event={event}/>
     ));
