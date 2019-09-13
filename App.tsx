@@ -8,6 +8,9 @@ import ProjectListScreen from "./src/components/views/ProjectListScreen";
 import ErrorListScreen from "./src/components/views/ErrorListScreen";
 import EventListScreen from "./src/components/views/EventListScreen";
 import EventDetailScreen from "./src/components/views/EventDetailScreen";
+import bugsnag from '@bugsnag/expo';
+
+const bugsnagClient = bugsnag();
 
 const MainNavigator = createStackNavigator({
     Home: HomeScreen,
