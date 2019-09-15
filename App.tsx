@@ -1,4 +1,5 @@
 import React from "react";
+import "./src/axios-btoa-polyfill";
 import {Provider} from "react-redux";
 import store from "./src/store";
 import {createAppContainer} from 'react-navigation';
