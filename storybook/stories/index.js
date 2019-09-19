@@ -4,6 +4,7 @@ import {storiesOf} from "@storybook/react-native";
 import CenterView from "./CenterView";
 import EventDetail from "../../src/components/molecules/EventDetail";
 import ErrorItem from "../../src/components/atoms/ErrorItem";
+import LoginScreen from "../../src/components/views/LoginScreen";
 // eslint-disable-next-line import/extensions
 
 const error = {
@@ -93,4 +94,10 @@ storiesOf("ErrorItem", module)
     ))
     .add("Event", () => (
         <ErrorItem error={error} event={event}/>
+    ));
+
+storiesOf("LoginScreen", module)
+    .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)
+    .add("default", () => (
+        <LoginScreen navigation={{}}/>
     ));

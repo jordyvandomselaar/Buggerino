@@ -4,7 +4,7 @@ import {Text, Button} from "react-native-elements";
 import OrganizationSelector from "../organisms/OrganizationSelector";
 import {NavigationScreenProps} from "react-navigation";
 
-const HomeScreen = (props: NavigationScreenProps) => {
+const OrganizationListScreen = (props: NavigationScreenProps) => {
     return (
         <View>
             <Text h3>Welcome to Buggerino!</Text>
@@ -14,4 +14,4 @@ const HomeScreen = (props: NavigationScreenProps) => {
     );
 };
 
-export default HomeScreen;
+export default OrganizationListScreen;

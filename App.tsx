@@ -4,23 +4,26 @@ import {Provider} from "react-redux";
 import store from "./src/store";
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack'
-import HomeScreen from "./src/components/views/HomeScreen";
 import ProjectListScreen from "./src/components/views/ProjectListScreen";
 import ErrorListScreen from "./src/components/views/ErrorListScreen";
 import EventListScreen from "./src/components/views/EventListScreen";
 import EventDetailScreen from "./src/components/views/EventDetailScreen";
 import bugsnag from '@bugsnag/expo';
+import LoginScreen from "./src/components/views/LoginScreen";
+import OrganizationListScreen from "./src/components/views/OrganizationListScreen";
+import ThemeProvider from "./src/components/organisms/ThemeProvider";
 
 const bugsnagClient = bugsnag();
 
 const MainNavigator = createStackNavigator({
-    Home: HomeScreen,
+    Login: LoginScreen,
+    OrganizationList: OrganizationListScreen,
     ProjectList: ProjectListScreen,
     ErrorList: ErrorListScreen,
     EventList: EventListScreen,
     EventDetail: EventDetailScreen
 }, {
-    initialRouteName: "Home",
+    initialRouteName: "Login",
     defaultNavigationOptions: {
         title: "Buggerino",
         headerStyle: {
@@ -39,10 +42,12 @@ const AppContainer = createAppContainer(MainNavigator);
 const App = () => {
     return (
         <Provider store={store}>
-            <AppContainer/>
+            <ThemeProvider>
+                <AppContainer/>
+            </ThemeProvider>
         </Provider>
     );
 };
 
 // export default require('./storybook').default;
- export default App;
+export default App;
