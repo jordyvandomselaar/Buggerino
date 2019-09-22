@@ -6,7 +6,7 @@ import {getErrorsForProject} from "../../api/errors";
 function* fetchErrors(action: loadErrorsAction) {
     const {data: errors} = yield call(getErrorsForProject, action.payload.projectId);
 
-    yield put(setErrors(errors));
+    yield put(yield call(setErrors, errors));
 }
 
 export default function* watchFetchErrors() {

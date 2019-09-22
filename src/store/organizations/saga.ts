@@ -7,7 +7,7 @@ function* fetchOrganizations() {
     try {
         const response = yield call(getOrganizations);
         const {data: organizations} = response;
-        yield put(setOrganizations(organizations));
+        yield put(yield call(setOrganizations, organizations));
     } catch (e) {
         console.error(e);
     }

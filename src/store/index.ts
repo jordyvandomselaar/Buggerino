@@ -5,6 +5,7 @@ import rootSaga from "./rootSaga";
 import {projectsReducer} from "./projects/reducer";
 import {errorsReducer} from "./errors/reducer";
 import {eventsReducer} from "./events/reducer";
+import {userReducer} from "./user/reducer";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -16,7 +17,8 @@ const rootReducer = combineReducers(
         organizations: organizationsReducer,
         projects: projectsReducer,
         errors: errorsReducer,
-        events: eventsReducer
+        events: eventsReducer,
+        user: userReducer
     }
 );
 

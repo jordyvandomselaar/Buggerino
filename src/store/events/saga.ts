@@ -6,7 +6,7 @@ function* fetchEvents(action: loadEventsAction) {
     try {
         const {data: events} = yield call(getEventsForError, action.payload.error);
 
-        yield put(setEvents(events));
+        yield put(yield call(setEvents, events));
     } catch (e) {
         console.error(e);
     }

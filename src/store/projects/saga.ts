@@ -5,7 +5,7 @@ import {LOAD_PROJECTS, loadProjectsAction, setProjects} from "./actions";
 function* fetchProjects(action: loadProjectsAction) {
     const {data: projects} = yield call(getProjects, action.payload.organizationId);
 
-    yield put(setProjects(projects));
+    yield put(yield call(setProjects, projects));
 }
 
 export default function* watchFetchProjects() {

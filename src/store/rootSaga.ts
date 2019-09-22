@@ -4,6 +4,7 @@ import watchFetchOrganizations from "./organizations/saga";
 import watchFetchProjects from "./projects/saga";
 import watchFetchErrors from "./errors/saga";
 import watchFetchEvents from "./events/saga";
+import watchUser from "./user/saga";
 
 export default function* rootSaga() {
     yield all([
@@ -11,6 +12,7 @@ export default function* rootSaga() {
         watchFetchOrganizations(),
         watchFetchProjects(),
         watchFetchErrors(),
-        watchFetchEvents()
+        watchFetchEvents(),
+        watchUser()
     ]);
 };
