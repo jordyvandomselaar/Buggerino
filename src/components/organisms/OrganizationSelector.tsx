@@ -3,9 +3,9 @@ import OrganizationList from "../molecules/OrganizationList";
 import {useSelector} from "react-redux";
 import {AppState} from "../../store";
 import {Organization} from "../../types/Organization";
-import {NavigationScreenProps} from "react-navigation";
+import {NavigationStackScreenComponent} from "react-navigation-stack"
 
-const OrganizationSelector = ({navigation}: NavigationScreenProps) => {
+const OrganizationSelector: NavigationStackScreenComponent = ({navigation}) => {
     const organizations = useSelector<AppState, Organization[]>(state => state.organizations.organizations);
 
     const handleRedirect = (organizationId: string) => navigation.navigate("ProjectList", {organizationId});

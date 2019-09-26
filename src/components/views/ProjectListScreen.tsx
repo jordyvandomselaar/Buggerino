@@ -1,10 +1,9 @@
 import React from "react";
 import {View} from "react-native";
-import {Text} from "react-native-elements";
-import {NavigationScreenProps} from "react-navigation";
 import ProjectSelector from "../organisms/ProjectSelector";
+import {NavigationStackScreenComponent} from "react-navigation-stack"
 
-const ProjectListScreen = (props: NavigationScreenProps) => {
+const ProjectListScreen: NavigationStackScreenComponent = props => {
     return (
         <View>
             <ProjectSelector {...props}/>

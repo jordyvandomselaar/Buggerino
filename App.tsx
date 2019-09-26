@@ -23,7 +23,7 @@ const MainNavigator = createStackNavigator({
     EventList: EventListScreen,
     EventDetail: EventDetailScreen
 }, {
-    initialRouteName: "Login",
+    initialRouteName: "OrganizationList",
     defaultNavigationOptions: {
         title: "Buggerino",
         headerStyle: {

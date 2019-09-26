@@ -2,9 +2,9 @@ import React from "react";
 import {View} from "react-native";
 import {Text, Button} from "react-native-elements";
 import OrganizationSelector from "../organisms/OrganizationSelector";
-import {NavigationScreenProps} from "react-navigation";
+import {NavigationStackScreenComponent} from "react-navigation-stack"
 
-const OrganizationListScreen = (props: NavigationScreenProps) => {
+const OrganizationListScreen: NavigationStackScreenComponent = props => {
     return (
         <View>
             <Text h3>Welcome to Buggerino!</Text>

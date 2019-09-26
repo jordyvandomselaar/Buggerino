@@ -1,12 +1,9 @@
 import React from "react";
 import {View} from "react-native";
-import {Text} from "react-native-elements";
-import {NavigationScreenProps} from "react-navigation";
-import ProjectSelector from "../organisms/ProjectSelector";
-import ErrorSelector from "../organisms/ErrorSelector";
+import {NavigationStackScreenComponent} from "react-navigation-stack"
 import EventDetailContainer from "../organisms/EventDetailContainer";
 
-const EventDetailScreen = (props: NavigationScreenProps) => {
+const EventDetailScreen: NavigationStackScreenComponent = props => {
     return (
         <View>
             <EventDetailContainer {...props}/>

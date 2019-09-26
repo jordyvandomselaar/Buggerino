@@ -1,12 +1,12 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {AppState} from "../../store";
-import {NavigationScreenProps} from "react-navigation";
+import {NavigationStackScreenComponent} from "react-navigation-stack"
 import {BugsnagError} from "../../types/BugsnagError";
 import {loadErrors} from "../../store/errors/actions";
 import ErrorList from "../molecules/ErrorList";
 
-const ErrorSelector = ({navigation}: NavigationScreenProps) => {
+const ErrorSelector: NavigationStackScreenComponent = ({navigation}) => {
     const dispatch = useDispatch();
     const errors = useSelector<AppState, BugsnagError[]>(state => state.errors.errors);
 

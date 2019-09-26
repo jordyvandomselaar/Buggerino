@@ -1,11 +1,9 @@
 import React from "react";
 import {View} from "react-native";
-import {Text} from "react-native-elements";
-import {NavigationScreenProps} from "react-navigation";
-import ProjectSelector from "../organisms/ProjectSelector";
+import {NavigationStackScreenComponent} from "react-navigation-stack"
 import ErrorSelector from "../organisms/ErrorSelector";
 
-const ErrorListScreen = (props: NavigationScreenProps) => {
+const ErrorListScreen: NavigationStackScreenComponent = props => {
     return (
         <View>
             <ErrorSelector {...props}/>

@@ -1,9 +1,9 @@
 import React from "react";
 import {View} from "react-native";
-import {NavigationScreenProps} from "react-navigation";
+import {NavigationStackScreenComponent} from "react-navigation-stack"
 import EventSelector from "../organisms/EventSelector";
 
-const EventListScreen = (props: NavigationScreenProps) => {
+const EventListScreen: NavigationStackScreenComponent = props => {
     return (
         <View>
             <EventSelector {...props}/>
