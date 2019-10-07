@@ -1,8 +1,6 @@
 import {getOrganizations} from "../../api/organizations";
 import {call, put, takeLatest} from "redux-saga/effects"
 import {LOAD_ORGANIZATIONS, setOrganizations} from "./actions";
-import {Client} from "@bugsnag/core";
-import {bugsnagClient} from "../../api/Client";
 import {saveUserInformation, setPassword, setUsername} from "../user/actions";
 
 function* fetchOrganizations() {
