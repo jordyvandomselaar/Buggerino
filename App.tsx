@@ -1,8 +1,13 @@
-import React from "react";
+import React, {useEffect, useRef} from "react";
 import "./src/axios-btoa-polyfill";
-import {Provider} from "react-redux";
-import store from "./src/store";
-import {createAppContainer} from 'react-navigation';
+import {Provider, useSelector} from "react-redux";
+import store, {AppState} from "./src/store";
+import {
+    createAppContainer,
+    NavigationActions,
+    NavigationContainerComponent,
+    NavigationNavigator
+} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack'
 import ProjectListScreen from "./src/components/views/ProjectListScreen";
 import ErrorListScreen from "./src/components/views/ErrorListScreen";
@@ -15,7 +20,7 @@ import ThemeProvider from "./src/components/organisms/ThemeProvider";
 
 const bugsnagClient = bugsnag();
 
-const MainNavigator = createStackNavigator({
+const mainNavigator = createStackNavigator({
     Login: LoginScreen,
     OrganizationList: OrganizationListScreen,
     ProjectList: ProjectListScreen,
@@ -23,7 +28,7 @@ const MainNavigator = createStackNavigator({
     EventList: EventListScreen,
     EventDetail: EventDetailScreen
 }, {
-    initialRouteName: "OrganizationList",
+    initialRouteName: "Login",
     defaultNavigationOptions: {
         title: "Buggerino",
         headerStyle: {
@@ -37,13 +42,26 @@ const MainNavigator = createStackNavigator({
     },
 });
 
-const AppContainer = createAppContainer(MainNavigator);
+const AppContainer = createAppContainer(mainNavigator);
 
 const App = () => {
+        const navigator = useRef<NavigationContainerComponent>();
+
+        useEffect(() => {
+            store.subscribe(() => {
+                const username = store.getState().user.username;
+
+                if(!username) {
+                    navigator.current.dispatch(NavigationActions.navigate({routeName: "Login"}))
+                }
+            });
+        }, [navigator.current]);
     return (
         <Provider store={store}>
             <ThemeProvider>
-                <AppContainer/>
+                <AppContainer ref={ref => {
+                    navigator.current = ref;
+                }}/>
             </ThemeProvider>
         </Provider>
     );

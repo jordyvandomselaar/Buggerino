@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {View} from "react-native";
 import {Button, Input, Text} from "react-native-elements";
 import styled from "styled-components";
@@ -6,6 +6,7 @@ import {NavigationStackScreenComponent} from "react-navigation-stack/lib/typescr
 import {useDispatch, useSelector} from "react-redux";
 import {saveUserInformation, setPassword, setUsername} from "../../store/user/actions";
 import {AppState} from "../../store";
+import * as SecureStore from "expo-secure-store"
 
 const Wrapper = styled(View)`
   padding: 50px 20px;
@@ -21,10 +22,18 @@ const ContentWrapper = styled(View)`
   padding-top: 20px;
 `;
 
-const LoginScreen: NavigationStackScreenComponent = () => {
+const LoginScreen: NavigationStackScreenComponent = ({navigation}) => {
     const dispatch = useDispatch();
     const username = useSelector<AppState, string>(state => state.user.username);
     const password = useSelector<AppState, string>(state => state.user.password);
+
+    useEffect(() => {
+        SecureStore.getItemAsync("username").then(username => {
+            if(!!username) {
+                navigation.push("OrganizationList")
+            }
+        });
+    }, []);
 
     return (
         <Wrapper>
@@ -37,7 +46,10 @@ const LoginScreen: NavigationStackScreenComponent = () => {
                 <Input label="Password" value={password} onChangeText={password => dispatch(setPassword(password))}
                        secureTextEntry/>
             </FormWrapper>
-            <Button title="Login" onPress={() => dispatch(saveUserInformation({username, password}))}/>
+            <Button title="Login" onPress={() => {
+                dispatch(saveUserInformation({username, password}));
+                navigation.push("OrganizationList")
+            }}/>
         </Wrapper>
     );
 };
