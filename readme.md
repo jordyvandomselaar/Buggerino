@@ -1,5 +1,5 @@
 <p align="center">
-    <img width="365" height="359" src="https://raw.githubusercontent.com/ericlbarnes/Buggerino/master/assets/logos/bug-green.svg" alt="Buggerino" />
+    <img width="365" height="359" src="https://raw.githubusercontent.com/ericlbarnes/Buggerino/master/assets/logos/bug-green.png" alt="Buggerino" />
 </p>
 
 # Buggerino
