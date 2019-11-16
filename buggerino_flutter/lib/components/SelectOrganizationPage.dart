@@ -13,7 +13,7 @@ class SelectOrganizationPage extends StatelessWidget {
           builder: (context, state) {
         if (state is OrganizationsLoadingState) {
           return SliverList(
-            delegate: SliverChildListDelegate([Text("Hey")]),
+            delegate: SliverChildListDelegate([Text("Loading…")]),
           );
         }
 
@@ -23,14 +23,15 @@ class SelectOrganizationPage extends StatelessWidget {
               return ListTile(
                 title: Text(state.organizations[index].name),
               );
-            }),
+            }, childCount: state.organizations.length),
           );
         }
         return SliverList(
-          delegate: SliverChildListDelegate([Text("Bye")]),
+          delegate: SliverChildListDelegate([Text("Hi")]),
         );
       }),
     );
+
 //    final organizations = AppStateData.of(context).organizations;
 //    return SelectPage(
 //      title: "Start by selecting an organization",

@@ -75,10 +75,7 @@ class App extends StatelessWidget {
             return LoginPage();
           }
 
-          return BlocProvider<OrganizationsBloc>(
-            child: SelectOrganizationPage(),
-            builder: (context) => OrganizationsBloc(),
-          );
+          return SelectOrganizationPage();
         },
       ),
     );
