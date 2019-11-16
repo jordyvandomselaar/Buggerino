@@ -18,7 +18,7 @@ class LoginPage extends StatelessWidget {
     return Scaffold(body: Builder(
       builder: (BuildContext context) {
         return Container(
-          constraints: BoxConstraints.expand(),
+            constraints: BoxConstraints.expand(),
             color: Colors.lightBlue,
             child: Padding(
               padding: const EdgeInsets.all(20),
@@ -34,11 +34,7 @@ class LoginPage extends StatelessWidget {
                         style: Theme.of(context).primaryTextTheme.title),
                   ),
                   LoginForm(
-                    onSubmit: (user) => handleLogin(
-                        User(
-                            username: "support@dij.digital",
-                            password: "DWWYMaHKaHBGurJjWT7UZbTn"),
-                        context),
+                    onSubmit: (user) => handleLogin(user, context),
                   )
                 ],
               ),
