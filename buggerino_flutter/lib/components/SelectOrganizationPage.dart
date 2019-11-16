@@ -31,16 +31,5 @@ class SelectOrganizationPage extends StatelessWidget {
         );
       }),
     );
-
-//    final organizations = AppStateData.of(context).organizations;
-//    return SelectPage(
-//      title: "Start by selecting an organization",
-//      childBuilderDelegate:
-//          SliverChildBuilderDelegate((BuildContext context, int index) {
-//        return ListTile(
-//          title: Text(organizations[index].name),
-//        );
-//      }, childCount: organizations.length),
-//    );
   }
 }
