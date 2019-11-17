@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:buggerino_flutter/models/BugsnagError.dart';
+import 'package:buggerino_flutter/models/Event.dart';
 import 'package:buggerino_flutter/models/Organization.dart';
 import 'package:buggerino_flutter/models/Project.dart';
 import 'package:buggerino_flutter/models/User.dart';
@@ -14,48 +15,55 @@ class BugsnagClient {
     return "Basic ${base64Encode(utf8.encode("${user.username}:${user.password}"))}";
   }
 
-  static getOrganizations() async {
+  static Future<List<Organization>> getOrganizations() async {
     final response = await get("https://api.bugsnag.com/user/organizations",
         headers: {"Authorization": _getBasicAuthHeader()});
 
-    List<Organization> organizations = [];
-
     if (response.statusCode == 200) {
-      organizations = (jsonDecode(response.body) as List)
+      return (jsonDecode(response.body) as List)
           .map((data) => Organization.fromJson(data))
           .toList();
     }
 
-    return organizations;
+    return [];
   }
 
-  static getProjects({@required Organization organization}) async {
+   static Future<List<Project>> getProjects({@required Organization organization}) async {
     final response = await get(organization.projectsUrl,
         headers: {"Authorization": _getBasicAuthHeader()});
 
-    List<Project> projects = [];
-
     if (response.statusCode == 200) {
-      projects = (jsonDecode(response.body) as List)
+      return (jsonDecode(response.body) as List)
           .map((data) => Project.fromJson(data))
           .toList();
     }
 
-    return projects;
+    return [];
   }
 
-  static getErrors({@required Project project}) async {
+  static Future<List<BugsnagError>> getErrors({@required Project project}) async {
     final response = await get(project.errorsUrl,
         headers: {"Authorization": _getBasicAuthHeader()});
 
-    List<BugsnagError> errors = [];
-
-    if(response.statusCode == 200) {
-      errors = (jsonDecode(response.body) as List)
+    if (response.statusCode == 200) {
+      return (jsonDecode(response.body) as List)
           .map((data) => BugsnagError.fromJson(data))
           .toList();
     }
 
-    return errors;
+    return [];
+  }
+
+  static Future<List<Event>> getEvents({@required BugsnagError error}) async {
+    final response = await get(error.eventsUrl,
+        headers: {"Authorization": _getBasicAuthHeader()});
+
+    if(response.statusCode == 200) {
+      return (jsonDecode(response.body) as List)
+          .map((data) => Event.fromJson(data))
+          .toList();
+    }
+
+    return [];
   }
 }
