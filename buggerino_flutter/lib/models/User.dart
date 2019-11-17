@@ -2,13 +2,8 @@ import 'dart:convert';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-@immutable
-class User extends Equatable {
+class User {
   final String username;
-
-  @override
-  List<Object> get props => [username];
-
   final String password;
 
   User({@required this.username, @required this.password});

@@ -4,7 +4,6 @@ import 'package:buggerino_flutter/bloc/Authentication/AuthenticationBloc.dart';
 import 'package:buggerino_flutter/bloc/Authentication/AuthenticationEvent.dart';
 import 'package:buggerino_flutter/components/LoginForm.dart';
 import 'package:buggerino_flutter/models/User.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
