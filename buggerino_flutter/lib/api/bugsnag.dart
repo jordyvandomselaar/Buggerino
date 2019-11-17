@@ -66,4 +66,15 @@ class BugsnagClient {
 
     return [];
   }
+
+  static Future<Event> getEvent({@required Event event}) async {
+    final response = await get(event.url,
+        headers: {"Authorization": _getBasicAuthHeader()});
+
+    if(response.statusCode == 200) {
+      return Event.fromJson(jsonDecode(response.body));
+    }
+
+    return null;
+  }
 }

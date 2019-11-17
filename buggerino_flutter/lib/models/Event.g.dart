@@ -17,6 +17,7 @@ Event _$EventFromJson(Map<String, dynamic> json) {
             ? null
             : BugsnagException.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    context: json['context'] as String,
   );
 }
 
@@ -24,4 +25,5 @@ Map<String, dynamic> _$EventToJson(Event instance) => <String, dynamic>{
       'url': instance.url,
       'received_at': instance.receivedAt?.toIso8601String(),
       'exceptions': instance.exceptions,
+      'context': instance.context,
     };

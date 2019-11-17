@@ -9,8 +9,9 @@ class Event {
   final String url;
   final DateTime receivedAt;
   final List<BugsnagException> exceptions;
+  final String context;
 
-  Event({@required this.url, @required this.receivedAt, @required this.exceptions});
+  Event({@required this.url, @required this.receivedAt, @required this.exceptions, @required this.context});
 
   factory Event.fromJson(Map<String, dynamic> json) => _$EventFromJson(json);
 

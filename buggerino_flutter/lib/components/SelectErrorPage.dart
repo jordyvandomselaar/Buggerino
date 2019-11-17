@@ -18,6 +18,10 @@ class SelectErrorPage extends StatelessWidget {
     this.errorsBloc.add(LoadErrors(project: this.project));
   }
 
+  void selectError({@required BugsnagError error, @required BuildContext context}) {
+      Navigator.of(context).pushNamed("/events", arguments: error);
+  }
+
   @override
   Widget build(BuildContext context) {
     return SelectPage(
@@ -66,7 +70,7 @@ class SelectErrorPage extends StatelessWidget {
                     ],
                   ),
                   trailing: Text(state.errors[index].events.toString()),
-//            onTap: () => this.selectOrganization(state.organizations[index], context),
+            onTap: () => this.selectError(error: state.errors[index], context: context),
                 );
               }, childCount: state.errors.length),
             );

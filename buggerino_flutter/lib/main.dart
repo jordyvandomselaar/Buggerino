@@ -1,16 +1,21 @@
 import 'package:bloc/bloc.dart';
 import 'package:buggerino_flutter/bloc/Authentication/AuthenticationState.dart';
 import 'package:buggerino_flutter/bloc/Errors/errors_bloc.dart';
+import 'package:buggerino_flutter/bloc/Events/bloc.dart';
 import 'package:buggerino_flutter/bloc/Organizations/organizations_bloc.dart';
 import 'package:buggerino_flutter/bloc/Projects/bloc.dart';
+import 'package:buggerino_flutter/components/EventSelectedPage.dart';
 import 'package:buggerino_flutter/components/LoginPage.dart';
 import 'package:buggerino_flutter/components/SelectErrorPage.dart';
+import 'package:buggerino_flutter/components/SelectEventPage.dart';
 import 'package:buggerino_flutter/components/SelectOrganizationPage.dart';
 import 'package:buggerino_flutter/components/SelectProjectPage.dart';
 import 'package:buggerino_flutter/components/SplashScreen.dart';
+import 'package:buggerino_flutter/models/BugsnagError.dart';
 import 'package:buggerino_flutter/models/Organization.dart';
 import 'package:buggerino_flutter/models/Project.dart';
 import 'package:buggerino_flutter/repositories/UserRepository.dart';
+import 'package:buggerino_flutter/view_models/event_selected_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -57,6 +62,9 @@ void main() {
       ),
       BlocProvider<ErrorsBloc>(
         builder: (context) => ErrorsBloc(),
+      ),
+      BlocProvider<EventBloc>(
+        builder: (context) => EventBloc(),
       )
     ],
     child: App(),
@@ -101,6 +109,20 @@ class App extends StatelessWidget {
                 builder: (context) => SelectErrorPage(
                     project: project,
                     errorsBloc: BlocProvider.of<ErrorsBloc>(context)));
+          case "/events":
+            final error = arguments as BugsnagError;
+            return MaterialPageRoute(
+                builder: (context) => SelectEventPage(
+                    error: error,
+                    eventBloc: BlocProvider.of<EventBloc>(context)));
+          case "/event":
+            final selectedEventViewModel = arguments as EventSelectedViewModel;
+            return MaterialPageRoute(
+                builder: (context) => EventSelectedPage(
+                    error: selectedEventViewModel.error,
+                    event: selectedEventViewModel.event,
+                    eventBloc: BlocProvider.of<EventBloc>(context)));
+
           default:
             return null;
         }

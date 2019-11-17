@@ -24,6 +24,8 @@ class SelectPage extends StatelessWidget {
                   title,
                   style: TextStyle(color: Theme.of(context).textTheme.title.color),
                   textAlign: TextAlign.center,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
                 )
               ),
               expandedHeight: 200,

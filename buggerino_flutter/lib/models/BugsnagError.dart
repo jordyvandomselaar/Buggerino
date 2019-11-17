@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part "BugsnagError.g.dart";
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake)
 class BugsnagError {
   final String eventsUrl;
   final String errorClass;
