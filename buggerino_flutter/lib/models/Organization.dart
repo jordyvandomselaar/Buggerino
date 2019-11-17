@@ -9,4 +9,8 @@ class Organization {
   final String projectsUrl;
 
   Organization({@required this.name, @required this.projectsUrl});
+
+  factory Organization.fromJson(Map<String, dynamic> json) => _$OrganizationFromJson(json);
+
+  toJson() => _$OrganizationToJson(this);
 }
