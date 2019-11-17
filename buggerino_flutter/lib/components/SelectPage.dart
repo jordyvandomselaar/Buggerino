@@ -28,7 +28,6 @@ class SelectPage extends StatelessWidget {
               ),
               expandedHeight: 200,
               backgroundColor: Colors.white,
-              floating: true,
             ),
             this.child
           ],

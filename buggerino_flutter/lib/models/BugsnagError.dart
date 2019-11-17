@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part "BugsnagError.g.dart";
+
+@JsonSerializable()
 class BugsnagError {
   final String eventsUrl;
   final String errorClass;
@@ -16,11 +20,7 @@ class BugsnagError {
       @required this.status,
       @required this.lastSeen});
 
-  BugsnagError.fromJson(Map<String, dynamic> json)
-      : eventsUrl = json["events_url"],
-        errorClass = json["error_class"],
-        message = json["message"],
-        events = json["events"],
-        status = json["status"],
-        lastSeen = DateTime.parse(json["last_seen"]);
+  factory BugsnagError.fromJson(Map<String, dynamic> json) => _$BugsnagErrorFromJson(json);
+
+  toJson() => _$BugsnagErrorToJson(this);
 }

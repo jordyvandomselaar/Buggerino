@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part "Project.g.dart";
+
+@JsonSerializable(fieldRename: FieldRename.snake)
 class Project {
   final String name;
   final String errorsUrl;
@@ -7,5 +11,7 @@ class Project {
 
   Project({@required this.name, @required this.errorsUrl, @required this.openErrorCount});
 
-  Project.fromJson(Map<String, dynamic> json) : name = json["name"], errorsUrl = json["errors_url"], openErrorCount = json["open_error_count"];
+  factory Project.fromJson(Map<String, dynamic> json) => _$ProjectFromJson(json);
+
+  toJson() => _$ProjectToJson(this);
 }
