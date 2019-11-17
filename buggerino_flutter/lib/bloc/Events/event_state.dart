@@ -1,4 +1,6 @@
+import 'package:buggerino_flutter/models/Event.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 abstract class EventState extends Equatable {
   const EventState();
@@ -15,7 +17,9 @@ class EventsLoadingState extends EventState {
 }
 
 class EventsLoadedState extends EventState {
+  final List<Event> events;
 
+  EventsLoadedState({@required this.events});
 
   @override
   List<Object> get props => [];
