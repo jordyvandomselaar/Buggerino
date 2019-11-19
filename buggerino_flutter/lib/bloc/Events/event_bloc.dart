@@ -16,11 +16,5 @@ class EventBloc extends Bloc<EventEvent, EventState> {
       final events = await BugsnagClient.getEvents(error: event.error);
       yield (EventsLoadedState(events: events));
     }
-
-    if(event is SelectEvent) {
-      yield (EventSelectedLoadingState());
-      final selectedEvent = await BugsnagClient.getEvent(event: event.event);
-      yield (EventSelectedLoadedState(event: selectedEvent, error: event.error));
-    }
   }
 }

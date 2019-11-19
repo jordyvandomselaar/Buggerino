@@ -8,7 +8,8 @@ part of 'StacktraceItem.dart';
 
 StacktraceItem _$StacktraceItemFromJson(Map<String, dynamic> json) {
   return StacktraceItem(
-    lineNumber: json['lineNumber'] as int,
+    lineNumber: json['line_number'] as int,
+    columnNumber: json['column_number'] as int,
     file: json['file'] as String,
     method: json['method'] as String,
     code: (json['code'] as Map<String, dynamic>)?.map(
@@ -19,7 +20,8 @@ StacktraceItem _$StacktraceItemFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$StacktraceItemToJson(StacktraceItem instance) =>
     <String, dynamic>{
-      'lineNumber': instance.lineNumber,
+      'line_number': instance.lineNumber,
+      'column_number': instance.columnNumber,
       'file': instance.file,
       'method': instance.method,
       'code': instance.code?.map((k, e) => MapEntry(k.toString(), e)),

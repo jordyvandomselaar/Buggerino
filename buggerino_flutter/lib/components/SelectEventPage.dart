@@ -50,7 +50,7 @@ class SelectEventPage extends StatelessWidget {
             return SliverList(
               delegate: SliverChildBuilderDelegate((context, index) {
                 return ListTile(
-                  title: Text(this.error.errorClass),
+                  title: Text("${this.error.errorClass} ${state.events[index].context}", maxLines: 1, overflow: TextOverflow.ellipsis),
                   subtitle: Text(this.error.message,
                       overflow: TextOverflow.ellipsis, maxLines: 1),
                   trailing: Text(

@@ -1,30 +1,28 @@
-import 'package:buggerino_flutter/bloc/Events/bloc.dart';
-import 'package:buggerino_flutter/components/FlexibleSpaceBar.dart' as prefix0;
+import 'package:buggerino_flutter/bloc/SelectedEvent/bloc.dart';
 import 'package:buggerino_flutter/components/SelectPage.dart';
-import 'package:buggerino_flutter/models/BugsnagError.dart';
-import 'package:buggerino_flutter/models/Event.dart';
+import 'package:buggerino_flutter/view_models/event_selected_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class EventSelectedPage extends StatelessWidget {
-  final Event event;
-  final BugsnagError error;
-  final EventBloc eventBloc;
+  final EventSelectedViewModel eventSelectedViewModel;
+  final SelectedEventBloc selectedEventBloc;
 
   EventSelectedPage(
       {Key key,
-      @required this.event,
-      @required this.error,
-      @required this.eventBloc})
+      @required this.eventSelectedViewModel,
+      @required this.selectedEventBloc})
       : super(key: key) {
-    this.eventBloc.add(SelectEvent(event: this.event, error: this.error));
+    this.selectedEventBloc.add(LoadEvent(
+        event: this.eventSelectedViewModel.event,
+        error: this.eventSelectedViewModel.error));
   }
 
   @override
   Widget build(BuildContext context) {
     return SelectPage(
-      title: this.error.message,
-      child: BlocBuilder<EventBloc, EventState>(
+      title: this.eventSelectedViewModel.error.message,
+      child: BlocBuilder<SelectedEventBloc, SelectedEventState>(
         builder: (context, state) {
           if (state is EventSelectedLoadingState) {
             return SliverList(
@@ -37,10 +35,45 @@ class EventSelectedPage extends StatelessWidget {
               delegate: SliverChildListDelegate([
                 Column(
                   children: <Widget>[
-                    ListTile(
-                      leading: Text(this.error.errorClass),
-                      title: ,
-                    )
+                    Text("${state.error.errorClass} ${state.event.context}", style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),),
+                    ...state.event.exceptions.map((exception) {
+                      return Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(exception.message),
+                          ),
+                          ...exception.stacktrace.map((stacktraceItem) {
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: <Widget>[
+                                  Padding(
+                                    padding: const EdgeInsets.only(bottom: 20),
+                                    child: Text(
+                                      "${stacktraceItem.file}   ${stacktraceItem.lineNumber}:${stacktraceItem.columnNumber}",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ),
+                                  ...stacktraceItem.code.keys.map((codeLine) {
+                                    return Text(
+                                      "${codeLine.toString()}   ${stacktraceItem.code[codeLine]}",
+                                    );
+                                  })
+                                ],
+                              ),
+                            );
+                          })
+                        ],
+                      );
+                    })
                   ],
                 )
               ]),

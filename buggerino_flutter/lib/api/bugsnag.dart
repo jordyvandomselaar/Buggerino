@@ -75,6 +75,14 @@ class BugsnagClient {
       return Event.fromJson(jsonDecode(response.body));
     }
 
+    if(response.statusCode == 429) {
+      final int retryAfter = int.parse(response.headers["retry-after"]);
+
+      await Future.delayed(Duration(seconds: retryAfter + 1));
+
+      return getEvent(event: event);
+    }
+
     return null;
   }
 }

@@ -4,6 +4,7 @@ import 'package:buggerino_flutter/bloc/Errors/errors_bloc.dart';
 import 'package:buggerino_flutter/bloc/Events/bloc.dart';
 import 'package:buggerino_flutter/bloc/Organizations/organizations_bloc.dart';
 import 'package:buggerino_flutter/bloc/Projects/bloc.dart';
+import 'package:buggerino_flutter/bloc/SelectedEvent/bloc.dart';
 import 'package:buggerino_flutter/components/EventSelectedPage.dart';
 import 'package:buggerino_flutter/components/LoginPage.dart';
 import 'package:buggerino_flutter/components/SelectErrorPage.dart';
@@ -65,7 +66,10 @@ void main() {
       ),
       BlocProvider<EventBloc>(
         builder: (context) => EventBloc(),
-      )
+      ),
+      BlocProvider<SelectedEventBloc>(
+        builder: (context) => SelectedEventBloc(),
+      ),
     ],
     child: App(),
   ));
@@ -119,9 +123,8 @@ class App extends StatelessWidget {
             final selectedEventViewModel = arguments as EventSelectedViewModel;
             return MaterialPageRoute(
                 builder: (context) => EventSelectedPage(
-                    error: selectedEventViewModel.error,
-                    event: selectedEventViewModel.event,
-                    eventBloc: BlocProvider.of<EventBloc>(context)));
+                    eventSelectedViewModel: selectedEventViewModel,
+                    selectedEventBloc: BlocProvider.of<SelectedEventBloc>(context)));
 
           default:
             return null;

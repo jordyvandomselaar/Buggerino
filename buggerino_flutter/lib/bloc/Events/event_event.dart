@@ -15,13 +15,3 @@ class LoadEvents extends EventEvent {
   @override
   List<Object> get props => [];
 }
-
-class SelectEvent extends EventEvent {
-  final Event event;
-  final BugsnagError error;
-
-  SelectEvent({@required this.event, @required this.error});
-
-  @override
-  List<Object> get props => [];
-}

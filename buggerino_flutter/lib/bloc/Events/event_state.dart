@@ -25,18 +25,3 @@ class EventsLoadedState extends EventState {
   @override
   List<Object> get props => [];
 }
-
-class EventSelectedLoadingState extends EventState {
-  @override
-  List<Object> get props => [];
-}
-
-class EventSelectedLoadedState extends EventState {
-  final Event event;
-  final BugsnagError error;
-
-  EventSelectedLoadedState({@required this.event, @required this.error});
-
-  @override
-  List<Object> get props => [];
-}
