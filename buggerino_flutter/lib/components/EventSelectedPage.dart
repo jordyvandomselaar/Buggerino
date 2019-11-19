@@ -35,10 +35,13 @@ class EventSelectedPage extends StatelessWidget {
               delegate: SliverChildListDelegate([
                 Column(
                   children: <Widget>[
-                    Text("${state.error.errorClass} ${state.event.context}", style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                    ),),
+                    Text(
+                      "${state.error.errorClass} ${state.event.context}",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
                     ...state.event.exceptions.map((exception) {
                       return Column(
                         children: <Widget>[
@@ -62,11 +65,14 @@ class EventSelectedPage extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  ...stacktraceItem.code.keys.map((codeLine) {
-                                    return Text(
-                                      "${codeLine.toString()}   ${stacktraceItem.code[codeLine]}",
-                                    );
-                                  })
+                                  ...(stacktraceItem.code != null
+                                      ? (stacktraceItem.code.keys
+                                          .map((codeLine) {
+                                          return Text(
+                                            "${codeLine.toString()}   ${stacktraceItem.code[codeLine]}",
+                                          );
+                                        }))
+                                      : [])
                                 ],
                               ),
                             );

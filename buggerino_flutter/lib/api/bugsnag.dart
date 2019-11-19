@@ -25,6 +25,14 @@ class BugsnagClient {
           .toList();
     }
 
+    if (response.statusCode == 429) {
+      final int retryAfter = int.parse(response.headers["retry-after"]);
+
+      await Future.delayed(Duration(seconds: retryAfter + 1));
+
+      return getOrganizations();
+    }
+
     return [];
   }
 
@@ -42,6 +50,14 @@ class BugsnagClient {
       return projects;
     }
 
+    if (response.statusCode == 429) {
+      final int retryAfter = int.parse(response.headers["retry-after"]);
+
+      await Future.delayed(Duration(seconds: retryAfter + 1));
+
+      return getProjects(organization: organization);
+    }
+
     return [];
   }
 
@@ -56,6 +72,14 @@ class BugsnagClient {
           .toList();
     }
 
+    if (response.statusCode == 429) {
+      final int retryAfter = int.parse(response.headers["retry-after"]);
+
+      await Future.delayed(Duration(seconds: retryAfter + 1));
+
+      return getErrors(project: project);
+    }
+
     return [];
   }
 
@@ -67,6 +91,14 @@ class BugsnagClient {
       return (jsonDecode(response.body) as List)
           .map((data) => Event.fromJson(data))
           .toList();
+    }
+
+    if (response.statusCode == 429) {
+      final int retryAfter = int.parse(response.headers["retry-after"]);
+
+      await Future.delayed(Duration(seconds: retryAfter + 1));
+
+      return getEvents(error: error);
     }
 
     return [];
