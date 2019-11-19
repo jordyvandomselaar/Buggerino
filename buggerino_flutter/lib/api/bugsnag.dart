@@ -28,20 +28,25 @@ class BugsnagClient {
     return [];
   }
 
-   static Future<List<Project>> getProjects({@required Organization organization}) async {
+  static Future<List<Project>> getProjects(
+      {@required Organization organization}) async {
     final response = await get(organization.projectsUrl,
         headers: {"Authorization": _getBasicAuthHeader()});
 
     if (response.statusCode == 200) {
-      return (jsonDecode(response.body) as List)
+      final projects = (jsonDecode(response.body) as List)
           .map((data) => Project.fromJson(data))
-          .toList();
+          .toList()
+          ..sort((projectA, projectB) => projectA.name.compareTo(projectB.name));
+
+      return projects;
     }
 
     return [];
   }
 
-  static Future<List<BugsnagError>> getErrors({@required Project project}) async {
+  static Future<List<BugsnagError>> getErrors(
+      {@required Project project}) async {
     final response = await get(project.errorsUrl,
         headers: {"Authorization": _getBasicAuthHeader()});
 
@@ -58,7 +63,7 @@ class BugsnagClient {
     final response = await get(error.eventsUrl,
         headers: {"Authorization": _getBasicAuthHeader()});
 
-    if(response.statusCode == 200) {
+    if (response.statusCode == 200) {
       return (jsonDecode(response.body) as List)
           .map((data) => Event.fromJson(data))
           .toList();
@@ -68,14 +73,14 @@ class BugsnagClient {
   }
 
   static Future<Event> getEvent({@required Event event}) async {
-    final response = await get(event.url,
-        headers: {"Authorization": _getBasicAuthHeader()});
+    final response =
+        await get(event.url, headers: {"Authorization": _getBasicAuthHeader()});
 
-    if(response.statusCode == 200) {
+    if (response.statusCode == 200) {
       return Event.fromJson(jsonDecode(response.body));
     }
 
-    if(response.statusCode == 429) {
+    if (response.statusCode == 429) {
       final int retryAfter = int.parse(response.headers["retry-after"]);
 
       await Future.delayed(Duration(seconds: retryAfter + 1));
