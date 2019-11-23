@@ -45,7 +45,8 @@ class BugsnagClient {
       final projects = (jsonDecode(response.body) as List)
           .map((data) => Project.fromJson(data))
           .toList()
-          ..sort((projectA, projectB) => projectA.name.compareTo(projectB.name));
+            ..sort(
+                (projectA, projectB) => projectA.name.compareTo(projectB.name));
 
       return projects;
     }
@@ -63,7 +64,7 @@ class BugsnagClient {
 
   static Future<List<BugsnagError>> getErrors(
       {@required Project project}) async {
-    final response = await get(project.errorsUrl,
+    final response = await get("${project.errorsUrl}?filters[error.status][][type]=eq&filters[error.status][][value]=open",
         headers: {"Authorization": _getBasicAuthHeader()});
 
     if (response.statusCode == 200) {
