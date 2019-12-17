@@ -20,10 +20,10 @@ class SelectPage extends StatelessWidget {
             SliverAppBar(
               iconTheme: Theme.of(context).iconTheme,
               flexibleSpace: prefix0.FlexibleSpaceBar(
+                centerTitle: true,
                 title: Text(
                   title,
                   style: TextStyle(color: Theme.of(context).textTheme.title.color),
-                  textAlign: TextAlign.center,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,
                 )
