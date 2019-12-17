@@ -11,6 +11,11 @@ class SelectPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    final padding = mediaQuery.padding;
+    final expandedHeight = (mediaQuery.size.height - padding.top - padding.bottom) / 3;
+
+
     return Scaffold(
         backgroundColor: Colors.white,
         body: CustomScrollView(
@@ -28,7 +33,7 @@ class SelectPage extends StatelessWidget {
                   maxLines: 1,
                 )
               ),
-              expandedHeight: 200,
+              expandedHeight: expandedHeight,
               backgroundColor: Colors.white,
             ),
             this.child
