@@ -27,45 +27,49 @@ class SelectEventPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SelectPage(
       title: this.error.message,
-      child: BlocBuilder<EventBloc, EventState>(
-        builder: (context, state) {
-          if (state is EventsLoadingState) {
-            return SliverList(
-              delegate: SliverChildListDelegate([Text("Loading…")]),
-            );
-          }
-
-          if (state is EventsLoadedState) {
-            if (state.events.length == 0) {
+      children: [
+        BlocBuilder<EventBloc, EventState>(
+          builder: (context, state) {
+            if (state is EventsLoadingState) {
               return SliverList(
-                delegate: SliverChildListDelegate([
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[Text("No events found…️")],
-                  )
-                ]),
+                delegate: SliverChildListDelegate([Text("Loading…")]),
               );
             }
 
-            return SliverList(
-              delegate: SliverChildBuilderDelegate((context, index) {
-                return ListTile(
-                  title: Text("${this.error.errorClass} ${state.events[index].context}", maxLines: 1, overflow: TextOverflow.ellipsis),
-                  subtitle: Text(this.error.message,
-                      overflow: TextOverflow.ellipsis, maxLines: 1),
-                  trailing: Text(
-                      state.events[index].receivedAt.toLocal().toString()),
-            onTap: () => this.selectEvent(state.events[index], context),
+            if (state is EventsLoadedState) {
+              if (state.events.length == 0) {
+                return SliverList(
+                  delegate: SliverChildListDelegate([
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[Text("No events found…️")],
+                    )
+                  ]),
                 );
-              }, childCount: state.events.length),
+              }
+
+              return SliverList(
+                delegate: SliverChildBuilderDelegate((context, index) {
+                  return ListTile(
+                    title: Text("${this.error.errorClass} ${state.events[index]
+                        .context}", maxLines: 1,
+                        overflow: TextOverflow.ellipsis),
+                    subtitle: Text(this.error.message,
+                        overflow: TextOverflow.ellipsis, maxLines: 1),
+                    trailing: Text(
+                        state.events[index].receivedAt.toLocal().toString()),
+                    onTap: () => this.selectEvent(state.events[index], context),
+                  );
+                }, childCount: state.events.length),
+              );
+            }
+            return SliverList(
+              delegate: SliverChildListDelegate(
+                  [Text("Something went wrong, please restart app")]),
             );
-          }
-          return SliverList(
-            delegate: SliverChildListDelegate(
-                [Text("Something went wrong, please restart app")]),
-          );
-        },
-      ),
+          },
+        )
+      ],
     );
   }
 }

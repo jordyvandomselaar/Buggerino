@@ -13,28 +13,33 @@ class SelectOrganizationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SelectPage(
       title: "Select an organization",
-      child: BlocBuilder<OrganizationsBloc, OrganizationsState>(
-          builder: (context, state) {
-        if (state is OrganizationsLoadingState) {
-          return SliverList(
-            delegate: SliverChildListDelegate([Text("Loading…")]),
-          );
-        }
+      children: [
+        BlocBuilder<OrganizationsBloc, OrganizationsState>(
+            builder: (context, state) {
+              if (state is OrganizationsLoadingState) {
+                return SliverList(
+                  delegate: SliverChildListDelegate([Text("Loading…")]),
+                );
+              }
 
-        if (state is OrganizationsLoadedState) {
-          return SliverList(
-            delegate: SliverChildBuilderDelegate((context, index) {
-              return ListTile(
-                title: Text(state.organizations[index].name),
-                onTap: () => this.selectOrganization(state.organizations[index], context),
+              if (state is OrganizationsLoadedState) {
+                return SliverList(
+                  delegate: SliverChildBuilderDelegate((context, index) {
+                    return ListTile(
+                      title: Text(state.organizations[index].name),
+                      onTap: () =>
+                          this.selectOrganization(
+                              state.organizations[index], context),
+                    );
+                  }, childCount: state.organizations.length),
+                );
+              }
+              return SliverList(
+                delegate: SliverChildListDelegate(
+                    [Text("Something went wrong, please restart app")]),
               );
-            }, childCount: state.organizations.length),
-          );
-        }
-        return SliverList(
-          delegate: SliverChildListDelegate([Text("Something went wrong, please restart app")]),
-        );
-      }),
+            })
+      ],
     );
   }
 }

@@ -22,76 +22,85 @@ class EventSelectedPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SelectPage(
       title: this.eventSelectedViewModel.error.message,
-      child: BlocBuilder<SelectedEventBloc, SelectedEventState>(
-        builder: (context, state) {
-          if (state is EventSelectedLoadingState) {
-            return SliverList(
-              delegate: SliverChildListDelegate([Text("Loading…")]),
-            );
-          }
+      children: [
+        BlocBuilder<SelectedEventBloc, SelectedEventState>(
+          builder: (context, state) {
+            if (state is EventSelectedLoadingState) {
+              return SliverList(
+                delegate: SliverChildListDelegate([Text("Loading…")]),
+              );
+            }
 
-          if (state is EventSelectedLoadedState) {
-            return SliverList(
-              delegate: SliverChildListDelegate([
-                Column(
-                  children: <Widget>[
-                    Text(
-                      "${state.error.errorClass} ${state.event.context}",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
+            if (state is EventSelectedLoadedState) {
+              return SliverList(
+                delegate: SliverChildListDelegate([
+                  Column(
+                    children: <Widget>[
+                      Text(
+                        "${state.error.errorClass} ${state.event.context}",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
                       ),
-                    ),
-                    ...state.event.exceptions.map((exception) {
-                      return Column(
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(exception.message),
-                          ),
-                          ...exception.stacktrace.map((stacktraceItem) {
-                            return Padding(
+                      ...state.event.exceptions.map((exception) {
+                        return Column(
+                          children: <Widget>[
+                            Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                children: <Widget>[
-                                  Padding(
-                                    padding: const EdgeInsets.only(bottom: 20),
-                                    child: Text(
-                                      "${stacktraceItem.file}   ${stacktraceItem.lineNumber}:${stacktraceItem.columnNumber}",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16,
+                              child: Text(exception.message),
+                            ),
+                            ...exception.stacktrace.map((stacktraceItem) {
+                              return Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  crossAxisAlignment:
+                                  CrossAxisAlignment.stretch,
+                                  children: <Widget>[
+                                    Padding(
+                                      padding:
+                                      const EdgeInsets.only(bottom: 20),
+                                      child: Text(
+                                        "${stacktraceItem
+                                            .file}   ${stacktraceItem
+                                            .lineNumber}:${stacktraceItem
+                                            .columnNumber}",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  ...(stacktraceItem.code != null
-                                      ? (stacktraceItem.code.keys
-                                          .map((codeLine) {
-                                          return Text(
-                                            "${codeLine.toString()}   ${stacktraceItem.code[codeLine]}",
-                                          );
-                                        }))
-                                      : [])
-                                ],
-                              ),
-                            );
-                          })
-                        ],
-                      );
-                    })
-                  ],
-                )
-              ]),
-            );
-          }
+                                    ...(stacktraceItem.code != null
+                                        ? (stacktraceItem.code.keys
+                                        .map((codeLine) {
+                                      return Text(
+                                        "${codeLine
+                                            .toString()}   ${stacktraceItem
+                                            .code[codeLine]}",
+                                      );
+                                    }))
+                                        : [])
+                                  ],
+                                ),
+                              );
+                            })
+                          ],
+                        );
+                      })
+                    ],
+                  )
+                ]),
+              );
+            }
 
-          return SliverList(
-            delegate: SliverChildListDelegate(
-                [Text("Something went wrong, please restart app")]),
-          );
-        },
-      ),
+            return SliverList(
+              delegate: SliverChildListDelegate(
+                  [Text("Something went wrong, please restart app")]),
+            );
+          },
+        )
+      ],
     );
   }
 }

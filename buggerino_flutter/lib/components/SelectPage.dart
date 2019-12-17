@@ -4,9 +4,9 @@ import 'package:flutter/rendering.dart';
 
 class SelectPage extends StatelessWidget {
   final String title;
-  final Widget child;
+  final List<Widget> children;
 
-  const SelectPage({Key key, @required this.title, this.child})
+  const SelectPage({Key key, @required this.title, this.children})
       : super(key: key);
 
   @override
@@ -14,7 +14,6 @@ class SelectPage extends StatelessWidget {
     final mediaQuery = MediaQuery.of(context);
     final padding = mediaQuery.padding;
     final expandedHeight = (mediaQuery.size.height - padding.top - padding.bottom) / 3;
-
 
     return Scaffold(
         backgroundColor: Colors.white,
@@ -36,7 +35,7 @@ class SelectPage extends StatelessWidget {
               expandedHeight: expandedHeight,
               backgroundColor: Colors.white,
             ),
-            this.child
+            ...this.children
           ],
         ));
   }

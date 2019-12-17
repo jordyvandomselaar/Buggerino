@@ -26,60 +26,68 @@ class SelectErrorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SelectPage(
       title: this.project.name,
-      child: BlocBuilder<ErrorsBloc, ErrorsState>(
-        builder: (context, state) {
-          if (state is ErrorsLoadingState) {
-            return SliverList(
-              delegate: SliverChildListDelegate(
-                [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text("Loading…")
-                    ],
-                  )
-                ]
-              ),
-            );
-          }
-
-          if (state is ErrorsLoadedState) {
-            if(state.errors.length == 0) {
+      children: [
+        BlocBuilder<ErrorsBloc, ErrorsState>(
+          builder: (context, state) {
+            if (state is ErrorsLoadingState) {
               return SliverList(
-                delegate: SliverChildListDelegate([
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text("No errors found 🎉️")
-                    ],
-                  )
-                ]),
+                delegate: SliverChildListDelegate(
+                    [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text("Loading…")
+                        ],
+                      )
+                    ]
+                ),
               );
             }
 
-
-            return SliverList(
-              delegate: SliverChildBuilderDelegate((context, index) {
-                return ListTile(
-                  title: Text(state.errors[index].errorClass),
-                  subtitle: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(state.errors[index].message, overflow: TextOverflow.ellipsis, maxLines: 1),
-                      Text(state.errors[index].lastSeen.toLocal().toString()),
-                    ],
-                  ),
-                  trailing: Text(state.errors[index].events.toString()),
-            onTap: () => this.selectError(error: state.errors[index], context: context),
+            if (state is ErrorsLoadedState) {
+              if (state.errors.length == 0) {
+                return SliverList(
+                  delegate: SliverChildListDelegate([
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text("No errors found 🎉️")
+                      ],
+                    )
+                  ]),
                 );
-              }, childCount: state.errors.length),
+              }
+
+
+              return SliverList(
+                delegate: SliverChildBuilderDelegate((context, index) {
+                  return ListTile(
+                    title: Text(state.errors[index].errorClass),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(state.errors[index].message,
+                            overflow: TextOverflow.ellipsis, maxLines: 1),
+                        Text(state.errors[index].lastSeen.toLocal().toString()),
+                      ],
+                    ),
+                    trailing: Text(state.errors[index].events.toString()),
+                    onTap: () =>
+                        this.selectError(
+                            error: state.errors[index], context: context),
+                  );
+                }, childCount: state.errors.length),
+              );
+            }
+            return SliverList(
+              delegate: SliverChildListDelegate([
+                Text(
+                    "Something went wrong, please go back and select this project again")
+              ]),
             );
-          }
-          return SliverList(
-            delegate: SliverChildListDelegate([Text("Something went wrong, please go back and select this project again")]),
-          );
-        },
-      ),
+          },
+        )
+      ],
     );
   }
 }
