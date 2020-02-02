@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:buggerino_flutter/bloc/Authentication/AuthenticationState.dart';
 import 'package:buggerino_flutter/bloc/Errors/errors_bloc.dart';
 import 'package:buggerino_flutter/bloc/Events/bloc.dart';
-import 'package:buggerino_flutter/bloc/Organizations/organizations_bloc.dart';
 import 'package:buggerino_flutter/bloc/Projects/bloc.dart';
 import 'package:buggerino_flutter/bloc/SelectedEvent/bloc.dart';
 import 'package:buggerino_flutter/components/EventSelectedPage.dart';
@@ -49,13 +48,10 @@ void main() {
 
   runApp(MultiBlocProvider(
     providers: [
-      BlocProvider<OrganizationsBloc>(
-        builder: (context) => OrganizationsBloc(),
-      ),
       BlocProvider<AuthenticationBloc>(
         builder: (context) => AuthenticationBloc(
-            userRepository: userRepository,
-            organizationsBloc: BlocProvider.of<OrganizationsBloc>(context))
+          userRepository: userRepository,
+        )
           ..add(AppStarted()),
       ),
       BlocProvider<ProjectsBloc>(
@@ -124,7 +120,8 @@ class App extends StatelessWidget {
             return MaterialPageRoute(
                 builder: (context) => EventSelectedPage(
                     eventSelectedViewModel: selectedEventViewModel,
-                    selectedEventBloc: BlocProvider.of<SelectedEventBloc>(context)));
+                    selectedEventBloc:
+                    BlocProvider.of<SelectedEventBloc>(context)));
 
           default:
             return null;

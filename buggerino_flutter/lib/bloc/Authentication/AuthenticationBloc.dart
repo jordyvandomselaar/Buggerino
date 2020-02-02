@@ -1,7 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:buggerino_flutter/api/bugsnag.dart';
-import 'package:buggerino_flutter/bloc/Organizations/organizations_bloc.dart';
-import 'package:buggerino_flutter/bloc/Organizations/organizations_event.dart';
 import 'package:buggerino_flutter/repositories/UserRepository.dart';
 import 'package:flutter/material.dart';
 import 'AuthenticationEvent.dart';
@@ -10,10 +8,9 @@ import 'AuthenticationState.dart';
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
   final UserRepository userRepository;
-  final OrganizationsBloc organizationsBloc;
 
-  AuthenticationBloc({@required this.userRepository, @required this.organizationsBloc})
-      : assert(userRepository != null), assert(organizationsBloc != null);
+  AuthenticationBloc({@required this.userRepository})
+      : assert(userRepository != null);
 
   @override
   AuthenticationState get initialState => AuthenticationUninitialized();
@@ -29,7 +26,6 @@ class AuthenticationBloc
       } else {
         BugsnagClient.user = user;
 
-        this.organizationsBloc.add(LoadOrganizations());
 
         yield new AuthenticationAuthenticated();
       }
@@ -42,7 +38,6 @@ class AuthenticationBloc
 
       BugsnagClient.user = event.user;
 
-      this.organizationsBloc.add(LoadOrganizations());
 
       yield new AuthenticationAuthenticated();
     }
