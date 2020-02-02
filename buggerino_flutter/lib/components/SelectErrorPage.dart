@@ -1,25 +1,23 @@
-import 'package:buggerino_flutter/api/bugsnag.dart';
-import 'package:buggerino_flutter/bloc/Errors/errors_bloc.dart';
-import 'package:buggerino_flutter/bloc/Errors/errors_event.dart';
-import 'package:buggerino_flutter/bloc/Errors/errors_state.dart';
 import 'package:buggerino_flutter/components/SelectPage.dart';
+import 'package:buggerino_flutter/mobx/stores/errors_store.dart';
 import 'package:buggerino_flutter/models/BugsnagError.dart';
 import 'package:buggerino_flutter/models/Project.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 class SelectErrorPage extends StatelessWidget {
   final Project project;
-  final ErrorsBloc errorsBloc;
+  final ErrorsStore errorsStore = ErrorsStore();
 
-  SelectErrorPage({Key key, @required this.project, @required this.errorsBloc}) : super(key: key) {
-    this.errorsBloc.add(LoadErrors(project: this.project));
+  SelectErrorPage({Key key, @required this.project})
+      : super(key: key) {
+    this.errorsStore.loadErrors(project: project);
   }
 
-  void selectError({@required BugsnagError error, @required BuildContext context}) {
-      Navigator.of(context).pushNamed("/events", arguments: error);
+  void selectError(
+      {@required BugsnagError error, @required BuildContext context}) {
+    Navigator.of(context).pushNamed("/events", arguments: error);
   }
 
   @override
@@ -27,63 +25,55 @@ class SelectErrorPage extends StatelessWidget {
     return SelectPage(
       title: this.project.name,
       children: [
-        BlocBuilder<ErrorsBloc, ErrorsState>(
-          builder: (context, state) {
-            if (state is ErrorsLoadingState) {
+        Observer(
+          builder: (_) {
+            if (this.errorsStore.loading == true) {
               return SliverList(
-                delegate: SliverChildListDelegate(
-                    [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text("Loading…")
-                        ],
-                      )
-                    ]
-                ),
+                delegate: SliverChildListDelegate([
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[Text("Loading…")],
+                  )
+                ]),
               );
             }
 
-            if (state is ErrorsLoadedState) {
-              if (state.errors.length == 0) {
-                return SliverList(
-                  delegate: SliverChildListDelegate([
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text("No errors found 🎉️")
-                      ],
-                    )
-                  ]),
-                );
-              }
-
-
+            if (this.errorsStore.errors.length == 0) {
               return SliverList(
-                delegate: SliverChildBuilderDelegate((context, index) {
-                  return ListTile(
-                    title: Text(state.errors[index].errorClass),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(state.errors[index].message,
-                            overflow: TextOverflow.ellipsis, maxLines: 1),
-                        Text(state.errors[index].lastSeen.toLocal().toString()),
-                      ],
-                    ),
-                    trailing: Text(state.errors[index].events.toString()),
-                    onTap: () =>
-                        this.selectError(
-                            error: state.errors[index], context: context),
-                  );
-                }, childCount: state.errors.length),
+                delegate: SliverChildListDelegate([
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[Text("No errors found 🎉️")],
+                  )
+                ]),
               );
             }
+
             return SliverList(
-              delegate: SliverChildListDelegate([
-                Text(
-                    "Something went wrong, please go back and select this project again")
-              ]),
+              delegate: SliverChildBuilderDelegate((context, index) {
+                return ListTile(
+                  title: Text(this.errorsStore.errors[index].errorClass),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(this.errorsStore.errors[index].message,
+                          overflow: TextOverflow.ellipsis, maxLines: 1),
+                      Text(this
+                          .errorsStore
+                          .errors[index]
+                          .lastSeen
+                          .toLocal()
+                          .toString()),
+                    ],
+                  ),
+                  trailing:
+                  Text(this.errorsStore.errors[index].events.toString()),
+                  onTap: () =>
+                      this.selectError(
+                          error: this.errorsStore.errors[index],
+                          context: context),
+                );
+              }, childCount: this.errorsStore.errors.length),
             );
           },
         )
