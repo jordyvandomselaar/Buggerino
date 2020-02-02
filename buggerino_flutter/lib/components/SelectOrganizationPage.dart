@@ -1,11 +1,11 @@
 import 'package:buggerino_flutter/components/SelectPage.dart';
-import 'package:buggerino_flutter/mobx/stores/organization_store.dart';
+import 'package:buggerino_flutter/mobx/stores/organizations_store.dart';
 import 'package:buggerino_flutter/models/Organization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
 class SelectOrganizationPage extends StatelessWidget {
-  final organizationStore = OrganizationStore();
+  final organizationStore = OrganizationsStore();
 
   SelectOrganizationPage() {
     this.organizationStore.loadOrganizations();

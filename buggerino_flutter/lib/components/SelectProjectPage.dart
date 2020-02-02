@@ -1,18 +1,17 @@
-import 'package:buggerino_flutter/bloc/Projects/bloc.dart';
 import 'package:buggerino_flutter/components/SelectPage.dart';
+import 'package:buggerino_flutter/mobx/stores/projects_store.dart';
 import 'package:buggerino_flutter/models/Organization.dart';
 import 'package:buggerino_flutter/models/Project.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 class SelectProjectPage extends StatelessWidget {
   final Organization organization;
-  final ProjectsBloc projectsBloc;
+  final ProjectsStore projectsStore = ProjectsStore();
 
-  SelectProjectPage(
-      {Key key, @required this.organization, @required this.projectsBloc})
+  SelectProjectPage({Key key, @required this.organization})
       : super(key: key) {
-    this.projectsBloc.add(LoadProjects(organization: this.organization));
+    this.projectsStore.loadProjects(organization: this.organization);
   }
 
   selectProject(Project project, BuildContext context) {
@@ -24,30 +23,28 @@ class SelectProjectPage extends StatelessWidget {
     return SelectPage(
       title: "Select a project",
       children: [
-        BlocBuilder<ProjectsBloc, ProjectsState>(
-          builder: (context, state) {
-            if (state is ProjectsLoadingState) {
+        Observer(
+          builder: (_) {
+            if (this.projectsStore.loading == true) {
               return SliverList(
                 delegate: SliverChildListDelegate([Text("Loading…")]),
               );
             }
 
-            if (state is ProjectsLoadedState) {
-              return SliverList(
-                delegate: SliverChildBuilderDelegate((context, index) {
-                  return ListTile(
-                    title: Text(state.projects[index].name),
-                    trailing:
-                    Text(state.projects[index].openErrorCount.toString()),
-                    onTap: () =>
-                        this.selectProject(state.projects[index], context),
-                  );
-                }, childCount: state.projects.length),
-              );
-            }
             return SliverList(
-              delegate: SliverChildListDelegate(
-                  [Text("Something went wrong, please restart app")]),
+              delegate: SliverChildBuilderDelegate((context, index) {
+                return ListTile(
+                  title: Text(this.projectsStore.projects[index].name),
+                  trailing: Text(this
+                      .projectsStore
+                      .projects[index]
+                      .openErrorCount
+                      .toString()),
+                  onTap: () =>
+                      this.selectProject(
+                          this.projectsStore.projects[index], context),
+                );
+              }, childCount: this.projectsStore.projects.length),
             );
           },
         )

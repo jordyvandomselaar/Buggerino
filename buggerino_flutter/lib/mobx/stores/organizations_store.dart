@@ -2,13 +2,13 @@ import 'package:buggerino_flutter/api/bugsnag.dart';
 import 'package:buggerino_flutter/models/Organization.dart';
 import 'package:mobx/mobx.dart';
 
-part 'organization_store.g.dart';
+part 'organizations_store.g.dart';
 
-class OrganizationStore = _OrganizationStore with _$OrganizationStore;
+class OrganizationsStore = _OrganizationsStore with _$OrganizationsStore;
 
-abstract class _OrganizationStore with Store {
+abstract class _OrganizationsStore with Store {
   @observable
-  ObservableList<Organization> organizations;
+  ObservableList<Organization> organizations = ObservableList();
 
   @observable
   bool loading = false;
