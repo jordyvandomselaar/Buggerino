@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {View} from 'react-native';
+import {Animated, View} from 'react-native';
 import {
   space,
   flexbox,
@@ -22,6 +22,14 @@ interface Props
 
 export const Container = styled(View)<Props>`
   ${space}
+  ${flexbox}
+  ${color}
+  ${layout}
+  ${border}
+`;
+
+export const AnimatedContainer = styled(Animated.View)<Props>`
+${space}
   ${flexbox}
   ${color}
   ${layout}

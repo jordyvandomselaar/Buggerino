@@ -17,6 +17,7 @@ const appNavigator = createStackNavigator(
   },
   {
     initialRouteName: 'SelectOrganization',
+    headerMode: 'none',
   },
 );
 

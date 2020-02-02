@@ -4,7 +4,7 @@ import {Container} from './Layout';
 interface Props {}
 
 const ListItem: FunctionComponent<Props> = ({children}) => {
-  return <Container>{children}</Container>;
+  return <Container p="20px">{children}</Container>;
 };
 
 export default ListItem;

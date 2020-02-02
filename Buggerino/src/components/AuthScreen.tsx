@@ -30,8 +30,4 @@ const AuthScreen: NavigationStackScreenComponent = () => {
   );
 };
 
-AuthScreen.navigationOptions = {
-  headerShown: false,
-};
-
 export default AuthScreen;
