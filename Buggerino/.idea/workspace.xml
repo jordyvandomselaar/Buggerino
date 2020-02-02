@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3f71befb-ea83-42b3-ae32-4074625f4d4a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.buckconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintrc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.prettierrc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.watchmanconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__tests__/App-test.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/_BUCK" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/build_defs.bzl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/debug.keystore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/proguard-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/debug/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/java/com/buggerino/MainActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/java/com/buggerino/MainApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/values/strings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/values/styles.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/babel.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Buggerino-tvOS/Info.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Buggerino-tvOSTests/Info.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Buggerino.xcodeproj/project.pbxproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Buggerino.xcodeproj/xcshareddata/xcschemes/Buggerino-tvOS.xcscheme" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Buggerino.xcodeproj/xcshareddata/xcschemes/Buggerino.xcscheme" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Buggerino.xcworkspace/contents.xcworkspacedata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Buggerino/AppDelegate.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Buggerino/AppDelegate.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Buggerino/Base.lproj/LaunchScreen.xib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Buggerino/Images.xcassets/AppIcon.appiconset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Buggerino/Images.xcassets/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Buggerino/Info.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Buggerino/main.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/BuggerinoTests/BuggerinoTests.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/BuggerinoTests/Info.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Podfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Podfile.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/metro.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/App.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AuthScreen.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Button.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CollapsibleHeader.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Divider.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ListItem.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SelectOrganization.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TextInput.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/theme.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript JSX File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectId" id="1XE9CnJyFg98PF4USOIsy3mVoe0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="NewWatcherDialog.advanced.open" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="watcher.settings" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Launch IOS" type="ReactNative" factoryName="React Native">
+      <node-interpreter value="project" />
+      <react-native value="$PROJECT_DIR$/node_modules/react-native" />
+      <platform value="IOS" />
+      <envs />
+      <only-packager />
+      <browser value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
+      <method v="2">
+        <option name="ReactNativePackager" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3f71befb-ea83-42b3-ae32-4074625f4d4a" name="Default Changelist" comment="" />
+      <created>1580600261190</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1580600261190</updated>
+      <workItem from="1580600266955" duration="291000" />
+      <workItem from="1580600686116" duration="2106000" />
+      <workItem from="1580602882274" duration="9606000" />
+      <workItem from="1580653646373" duration="6907000" />
+    </task>
+    <task id="LOCAL-00001" summary="master: Try to do it in react-native from scratch">
+      <created>1580614007643</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1580614007647</updated>
+    </task>
+    <task id="LOCAL-00002" summary="master: Get collapsible header working, commit unversioned files">
+      <created>1580660522500</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1580660522501</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="master: Try to do it in react-native from scratch" />
+    <MESSAGE value="master: Get collapsible header working, commit unversioned files" />
+    <option name="LAST_COMMIT_MESSAGE" value="master: Get collapsible header working, commit unversioned files" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="320" y="115" key="#ESLint" timestamp="1580660307682">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="320" y="115" key="#ESLint/0.0.1440.900@0.0.1440.900" timestamp="1580660307682" />
+    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1580602979624">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1580602979624" />
+    <state x="452" y="250" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1580613335338">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="452" y="250" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1580613335338" />
+    <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1580600798269">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1580600798269" />
+    <state x="247" y="0" key="CommitChangelistDialog2" timestamp="1580660521975">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="247" y="0" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1580660521975" />
+    <state x="240" y="226" width="718" height="656" key="EditFileWatcherDialog" timestamp="1580654951073">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="240" y="226" width="718" height="656" key="EditFileWatcherDialog/0.0.1440.900@0.0.1440.900" timestamp="1580654951072" />
+    <state width="1398" height="219" key="GridCell.Tab.0.bottom" timestamp="1580661303903">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="219" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1580661303903" />
+    <state width="1398" height="219" key="GridCell.Tab.0.center" timestamp="1580661303902">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="219" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1580661303902" />
+    <state width="1398" height="219" key="GridCell.Tab.0.left" timestamp="1580661303901">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="219" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1580661303901" />
+    <state width="1398" height="219" key="GridCell.Tab.0.right" timestamp="1580661303903">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="219" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1580661303903" />
+    <state width="1398" height="275" key="GridCell.Tab.1.bottom" timestamp="1580614095691">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="275" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1580614095691" />
+    <state width="1398" height="275" key="GridCell.Tab.1.center" timestamp="1580614095684">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="275" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1580614095684" />
+    <state width="1398" height="275" key="GridCell.Tab.1.left" timestamp="1580614095684">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="275" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1580614095683" />
+    <state width="1398" height="275" key="GridCell.Tab.1.right" timestamp="1580614095684">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="275" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1580614095684" />
+    <state width="1398" height="275" key="GridCell.Tab.2.bottom" timestamp="1580614095693">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="275" key="GridCell.Tab.2.bottom/0.0.1440.900@0.0.1440.900" timestamp="1580614095693" />
+    <state width="1398" height="275" key="GridCell.Tab.2.center" timestamp="1580614095693">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="275" key="GridCell.Tab.2.center/0.0.1440.900@0.0.1440.900" timestamp="1580614095693" />
+    <state width="1398" height="275" key="GridCell.Tab.2.left" timestamp="1580614095692">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="275" key="GridCell.Tab.2.left/0.0.1440.900@0.0.1440.900" timestamp="1580614095692" />
+    <state width="1398" height="275" key="GridCell.Tab.2.right" timestamp="1580614095693">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="275" key="GridCell.Tab.2.right/0.0.1440.900@0.0.1440.900" timestamp="1580614095693" />
+    <state x="108" y="86" key="SettingsEditor" timestamp="1580654951990">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="108" y="86" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1580654951990" />
+    <state width="500" height="445" key="SwitcherDM" timestamp="1580660293618">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="500" height="445" key="SwitcherDM/0.0.1440.900@0.0.1440.900" timestamp="1580660293618" />
+    <state x="320" y="186" key="Vcs.Push.Dialog.v2" timestamp="1580660524746">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="320" y="186" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1580660524746" />
+    <state x="387" y="205" width="687" height="518" key="find.popup" timestamp="1580610934141">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="387" y="205" width="687" height="518" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1580610934141" />
+    <state width="600" height="440" key="javadoc.popup" timestamp="1580606922329">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="600" height="440" key="javadoc.popup/0.0.1440.900@0.0.1440.900" timestamp="1580606922329" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1580656670417">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1580656670417" />
+  </component>
+</project>
