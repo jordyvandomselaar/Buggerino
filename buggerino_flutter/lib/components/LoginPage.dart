@@ -1,15 +1,16 @@
-import 'dart:convert';
-
-import 'package:buggerino_flutter/bloc/Authentication/AuthenticationBloc.dart';
-import 'package:buggerino_flutter/bloc/Authentication/AuthenticationEvent.dart';
 import 'package:buggerino_flutter/components/LoginForm.dart';
+import 'package:buggerino_flutter/mobx/stores/auth_store.dart';
 import 'package:buggerino_flutter/models/User.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginPage extends StatelessWidget {
+  final AuthStore authStore;
+
+
+  LoginPage({@required this.authStore});
+
   void handleLogin(User user, BuildContext context) async {
-    BlocProvider.of<AuthenticationBloc>(context).add(LoggedIn(user: user));
+    this.authStore.login(user: user);
   }
 
   @override
@@ -34,6 +35,7 @@ class LoginPage extends StatelessWidget {
                   ),
                   LoginForm(
                     onSubmit: (user) => handleLogin(user, context),
+                    authStore: this.authStore,
                   )
                 ],
               ),
