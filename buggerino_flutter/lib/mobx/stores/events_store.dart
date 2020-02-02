@@ -13,6 +13,9 @@ abstract class _EventsStore with Store {
   ObservableList<Event> events = ObservableList();
 
   @observable
+  Event selectedEvent;
+
+  @observable
   bool loading = false;
 
   @action
@@ -20,6 +23,13 @@ abstract class _EventsStore with Store {
     this.loading = true;
     this.events =
         ObservableList.of(await BugsnagClient.getEvents(error: error));
+    this.loading = false;
+  }
+
+  @action
+  Future<void> selectEvent({@required Event event }) async {
+    this.loading = true;
+    this.selectedEvent = await BugsnagClient.getEvent(event: event);
     this.loading = false;
   }
 }
