@@ -27,7 +27,6 @@ class _AppState extends State<App> {
   final AuthStore authStore = AuthStore();
   ReactionDisposer _disposer;
 
-
   _AppState() {
     this._disposer = autorun((_) {
       BugsnagClient.user = this.authStore.user;
@@ -97,5 +96,4 @@ class _AppState extends State<App> {
     super.dispose();
     this._disposer();
   }
-
 }
