@@ -25,7 +25,7 @@ class SelectProjectPage extends StatelessWidget {
           SliverList(
             delegate: SliverChildListDelegate([
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: TextFormField(
                   onChanged: (String value) {
                     this.projectsStore.search(value: value);
