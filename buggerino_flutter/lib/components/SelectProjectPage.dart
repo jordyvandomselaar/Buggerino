@@ -9,8 +9,7 @@ class SelectProjectPage extends StatelessWidget {
   final Organization organization;
   final ProjectsStore projectsStore = ProjectsStore();
 
-  SelectProjectPage({Key key, @required this.organization})
-      : super(key: key) {
+  SelectProjectPage({Key key, @required this.organization}) : super(key: key) {
     this.projectsStore.loadProjects(organization: this.organization);
   }
 
@@ -20,35 +19,53 @@ class SelectProjectPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SelectPage(
-      title: "Select a project",
-      children: [
-        Observer(
-          builder: (_) {
-            if (this.projectsStore.loading == true) {
-              return SliverList(
-                delegate: SliverChildListDelegate([Text("Loading…")]),
+    return Observer(
+      builder: (_) {
+        List<Widget> children = [
+          SliverList(
+            delegate: SliverChildListDelegate([
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: TextFormField(
+                  onChanged: (String value) {
+                    this.projectsStore.search(value: value);
+                  },
+                  decoration: InputDecoration(labelText: "Search"),
+                ),
+              )
+            ]),
+          ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate((context, index) {
+              return ListTile(
+                title: Text(this.projectsStore.projects[index].name),
+                trailing: Text(this
+                    .projectsStore
+                    .projects[index]
+                    .openErrorCount
+                    .toString()),
+                onTap: () =>
+                    this
+                        .selectProject(
+                        this.projectsStore.projects[index], context),
               );
-            }
+            }, childCount: this.projectsStore.projects.length),
+          )
+        ];
 
-            return SliverList(
-              delegate: SliverChildBuilderDelegate((context, index) {
-                return ListTile(
-                  title: Text(this.projectsStore.projects[index].name),
-                  trailing: Text(this
-                      .projectsStore
-                      .projects[index]
-                      .openErrorCount
-                      .toString()),
-                  onTap: () =>
-                      this.selectProject(
-                          this.projectsStore.projects[index], context),
-                );
-              }, childCount: this.projectsStore.projects.length),
-            );
-          },
-        )
-      ],
+        if (this.projectsStore.loading == true) {
+          children = [
+            SliverList(
+              delegate: SliverChildListDelegate([Text("Loading…")]),
+            )
+          ];
+        }
+
+        return SelectPage(
+          title: "Select a project",
+          children: children,
+        );
+      },
     );
   }
 }

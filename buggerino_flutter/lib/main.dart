@@ -10,6 +10,7 @@ import 'package:buggerino_flutter/models/BugsnagError.dart';
 import 'package:buggerino_flutter/models/Organization.dart';
 import 'package:buggerino_flutter/models/Project.dart';
 import 'package:buggerino_flutter/view_models/event_selected_view_model.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
@@ -49,7 +50,8 @@ class _AppState extends State<App> {
         TextTheme(title: TextStyle(fontSize: 20, color: Colors.black87)),
       ),
       home: Observer(builder: (_) {
-        if (this.authStore.loading || this.authStore.user == null ||
+        if (this.authStore.loading ||
+            this.authStore.user == null ||
             this.authStore.user.username == '') {
           return LoginPage(authStore: this.authStore);
         }
@@ -62,25 +64,25 @@ class _AppState extends State<App> {
         switch (settings.name) {
           case "/projects":
             final organization = arguments as Organization;
-            return MaterialPageRoute(
+            return CupertinoPageRoute(
                 builder: (context) =>
                     SelectProjectPage(
                       organization: organization,
                     ));
           case "/errors":
             final project = arguments as Project;
-            return MaterialPageRoute(
+            return CupertinoPageRoute(
                 builder: (context) => SelectErrorPage(project: project));
           case "/events":
             final error = arguments as BugsnagError;
-            return MaterialPageRoute(
+            return CupertinoPageRoute(
                 builder: (context) =>
                     SelectEventPage(
                       error: error,
                     ));
           case "/event":
             final selectedEventViewModel = arguments as EventSelectedViewModel;
-            return MaterialPageRoute(
+            return CupertinoPageRoute(
                 builder: (context) =>
                     EventSelectedPage(
                         eventSelectedViewModel: selectedEventViewModel));

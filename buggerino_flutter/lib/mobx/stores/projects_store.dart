@@ -10,16 +10,32 @@ class ProjectsStore = _ProjectsStore with _$ProjectsStore;
 
 abstract class _ProjectsStore with Store {
   @observable
-  ObservableList<Project> projects = ObservableList();
+  ObservableList<Project> _projects = ObservableList();
 
   @observable
   bool loading = false;
 
+  @observable
+  String _search = '';
+
+  @computed
+  List<Project> get projects {
+    return this._projects.where((Project project) {
+      return project.name.toLowerCase().contains(this._search.toLowerCase());
+    }).toList();
+  }
+
+
   @action
   Future<void> loadProjects({@required Organization organization}) async {
     this.loading = true;
-    this.projects = ObservableList.of(
+    this._projects = ObservableList.of(
         await BugsnagClient.getProjects(organization: organization));
     this.loading = false;
+  }
+
+  @action
+  void search({@required String value}) {
+    this._search = value;
   }
 }
