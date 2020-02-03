@@ -49,7 +49,8 @@ class _AppState extends State<App> {
         TextTheme(title: TextStyle(fontSize: 20, color: Colors.black87)),
       ),
       home: Observer(builder: (_) {
-        if (this.authStore.loading || this.authStore.user == null) {
+        if (this.authStore.loading || this.authStore.user == null ||
+            this.authStore.user.username == '') {
           return LoginPage(authStore: this.authStore);
         }
 
